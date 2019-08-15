@@ -5,6 +5,8 @@ import { Router } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { AuthService } from '../auth.service';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,7 +27,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     public snackBar: MatSnackBar,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -45,10 +48,20 @@ export class LoginComponent implements OnInit {
   handleSignIn(){
     this.bSignIn = true;
     let formData = new FormData();
-    formData.append('Email', this.signInForm.get('Email').value);
-    formData.append('Password', this.signInForm.get('Password').value);
-    formData.append('Client_Id', this.signInForm.get('Client_Id').value);
-    console.log(this.signInForm.value);
+    formData.append('email', this.signInForm.get('Email').value);
+    formData.append('password', this.signInForm.get('Password').value);
+    //console.log(this.signInForm.value);
+    this.authService.validateUserCredentials(this.signInForm.get('Client_Id').value, formData)
+    .subscribe(
+      res => {
+        this.bSignIn = false;
+        console.log(res);
+      },
+      err => {
+        this.bSignIn = false;
+        console.log(err);
+      }
+    );
   }
 
 }

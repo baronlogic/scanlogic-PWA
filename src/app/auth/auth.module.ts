@@ -25,6 +25,8 @@ import {MatSelectModule} from '@angular/material/select';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
+import { AuthService } from './auth.service';
+
 
 @NgModule({
   declarations: [LoginComponent],
@@ -48,6 +50,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatSortModule,
     MatProgressBarModule,
     FlexLayoutModule
-  ]
+  ],
+  providers: [AuthService]
 })
 export class AuthModule { }
