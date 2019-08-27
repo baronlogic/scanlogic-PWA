@@ -32,6 +32,9 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    if(localStorage.getItem('userLogged')){
+      this.goToProjectSelection();
+    }
     this.signInForm = this.formBuilder.group({
       Email: ['', Validators.required],
       Password: ['', Validators.required],
@@ -45,6 +48,10 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  goToProjectSelection(){
+    this.router.navigate(['/project']);
+  }
+
   handleSignIn(){
     this.bSignIn = true;
     let formData = new FormData();
@@ -55,11 +62,25 @@ export class LoginComponent implements OnInit {
     .subscribe(
       res => {
         this.bSignIn = false;
-        console.log(res);
+        //console.log(res);
+        this.auxRes = res;
+        if(this.auxRes.type == 'error'){
+          this.openSnackBar(this.auxRes.message);
+          return;
+        }
+        else if(this.auxRes.type == 'success'){
+          let auxUser = {
+            id: this.auxRes.id,
+            clientId: this.auxRes.client_id,
+          }
+          localStorage.setItem('userLogged', JSON.stringify(auxUser));
+          this.goToProjectSelection();
+        }
       },
       err => {
         this.bSignIn = false;
-        console.log(err);
+        //console.log(err);
+        this.openSnackBar(err.message);
       }
     );
   }

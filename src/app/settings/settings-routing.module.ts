@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProjectSelectionComponent } from './project-selection/project-selection.component';
+import { DeviceIdentifierComponent } from './device-identifier/device-identifier.component';
 
 
 const routes: Routes = [
-  { path: '', component: ProjectSelectionComponent }
+  { path: 'device', component: DeviceIdentifierComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProjectRoutingModule { }
+export class SettingsRoutingModule { }

@@ -1,0 +1,26 @@
+<div fxFill class="padding-login slide-in-fwd-center" fxLayout="column" fxLayoutAlign="center center">
+    <mat-toolbar>
+        <span class="toolbar-text">Hello <strong class="bold">bryandsl</strong></span>
+        <span class="spacer"></span>
+        <span class="toolbar-text"><strong class="bold">SHOCKLOGIC</strong></span>
+    </mat-toolbar>
+    <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+    <span class="subtitle text-center mt-50">Please enter an unique device name, corresponding to a location being scanned, or simply to identify who is using it</span>
+    <form [formGroup]="deviceForm" (ngSubmit)="handleDevice()" fxFill fxLayout="column" fxLayoutAlign="center center">
+        <mat-form-field appearance="outline">
+            <mat-label>Device Name</mat-label>
+            <input matInput formControlName="Device_Name" class="form-control">
+        </mat-form-field>
+        <div fxFill fxLayout="row" fxLayoutAlign="space-evenly center">
+            <button (click)="resetDeviceName()" type="button" class="second-btn" mat-raised-button [disabled]="!deviceForm.valid">
+                <span *ngIf="true" class="btn-text">RESET</span>
+                <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+            </button>
+            <button class="submit-btn" mat-raised-button [disabled]="!deviceForm.valid">
+                <span *ngIf="true" class="btn-text">CONTINUE</span>
+                <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+            </button>
+        </div>
+    </form>
+        
+</div>

@@ -6,6 +6,17 @@ $leadlogic-dark: #222327;
 body {
   background-color: whitesmoke;
   color: $leadlogic-orange;
+  margin: 0px;
+}
+
+mat-toolbar{
+  background-color: $leadlogic-orange !important;
+  color: whitesmoke !important;
+  font-family: $leadlogic-font !important;
+}
+
+.toolbar-text{
+  font-size: 14px;
 }
 
 .spacer {
@@ -20,8 +31,16 @@ app-navbar{
   width: 100%;
 }
 
+.mt-50{
+  margin-top: 50px;
+}
+
 .text-center{
   text-align: center;
+}
+
+.text-dark{
+  color: $leadlogic-dark;
 }
 
 .bold{
@@ -72,6 +91,17 @@ mat-form-field.mat-form-field {
   font-family: $leadlogic-font;
   width: 201px;
   color: rgb(77, 77, 77);
+}
+
+.subtitle{
+  color: rgb(77, 77, 77);
+  font-family: $leadlogic-font;
+  font-size: 14px;
+  margin-bottom: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .slide-in-fwd-center {
