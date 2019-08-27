@@ -1,0 +1,23 @@
+$leadlogic-font: 'Montserrat', sans-serif;
+$leadlogic-orange: #FD814C;
+
+.submit-btn{
+    margin-top: 20px;
+    width: 100px;
+    height: 45PX;
+    background-color: $leadlogic-orange;
+    text-align: -webkit-center;
+}
+.second-btn{
+    margin-top: 20px;
+    width: 100px;
+    height: 45PX;
+    background-color: white;
+    text-align: -webkit-center;
+}
+
+.btn-text{
+    font-size: 12px;
+    font-family: $leadlogic-font;
+    font-weight: 400;
+}

@@ -1,0 +1,19 @@
+<div *ngIf="this.user" fxFill class="padding-login slide-in-fwd-center" fxLayout="column" fxLayoutAlign="center center" >
+    <mat-toolbar>
+        <span class="toolbar-text">Hello <strong class="bold">{{this.user.id}}</strong></span>
+        <span class="spacer"></span>
+        <span class="toolbar-text"><strong class="bold">{{this.user.clientId}}</strong></span>
+    </mat-toolbar>
+    <mat-progress-bar *ngIf="!this.projects" mode="indeterminate"></mat-progress-bar>
+    <div *ngIf="this.projects">
+        <h3 class="lead-font text-dark text-center slide-in-fwd-center">Select Project</h3>
+            <mat-card (click)="selectProject(project.Project)" class="my-20" *ngFor="let project of projects">
+                <p class="lead-font list-font"><strong>[{{project.Project}}] - {{project.Name}}</strong></p>
+                <p class="lead-font list-font">{{project.Start_Date}} - {{project.End_Date}}</p>
+                <p class="lead-font list-font">Delegates: <span *ngIf="project.Attendees != 0; else withoutAttendees">{{project.Attendees}}</span></p>
+                <ng-template #withoutAttendees>
+                    0
+                </ng-template>
+            </mat-card>
+    </div>
+</div>
