@@ -19,6 +19,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatListModule} from '@angular/material/list';
 import {MatRippleModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -43,6 +44,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatListModule,
     MatRippleModule,
     MatCardModule,
+    MatTabsModule,
     FlexLayoutModule
   ],
   exports: [
@@ -63,6 +65,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatListModule,
     MatRippleModule,
     MatCardModule,
+    MatTabsModule,
     FlexLayoutModule
   ]
 })

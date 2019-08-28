@@ -4,9 +4,29 @@ $leadlogic-orange: #FD814C;
 $leadlogic-dark: #222327;
 
 body {
+  height: 100%;
+  box-sizing: border-box;
   background-color: whitesmoke;
   color: $leadlogic-orange;
   margin: 0px;
+}
+
+html {
+  height: 100%;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.header{
+  flex: 0 0 auto;
+}
+
+.content{
+  flex: 1 1 auto;     
+  overflow-y: auto;     
+}
+.footer{
+  flex: 0 0 auto;
 }
 
 mat-toolbar{
@@ -31,8 +51,17 @@ app-navbar{
   width: 100%;
 }
 
+.mt-10{
+  margin-top: 10px;
+}
+
 .mt-50{
   margin-top: 50px;
+}
+
+.mx-20{
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .text-center{
@@ -97,7 +126,6 @@ mat-form-field.mat-form-field {
   color: rgb(77, 77, 77);
   font-family: $leadlogic-font;
   font-size: 14px;
-  margin-bottom: 20px;
   margin-left: 20px;
   margin-right: 20px;
   padding-left: 20px;

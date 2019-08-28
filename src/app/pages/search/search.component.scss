@@ -1,0 +1,52 @@
+$leadlogic-font: 'Montserrat', sans-serif;
+$leadlogic-orange: #FD814C;
+
+mat-form-field.mat-form-field {
+    font-size: 12px;
+    font-family: $leadlogic-font;
+    width: 90%;
+}
+
+.list-font{
+    font-size: 12px !important;
+}
+
+.my-10{
+    margin-bottom: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.text-left{
+    text-align: left;
+}
+
+:host ::ng-deep .mat-card-header-text{
+    margin: 0px;
+}
+
+.validate-btn{
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100px;
+    height: 45PX;
+    border-color: green;
+    color: green;
+    text-align: -webkit-center;
+}
+.details-btn{
+    margin-bottom: 20px;
+    margin-left: 10px;
+     margin-right: 10px;
+    width: 100px;
+    height: 45PX;
+    background-color: white;
+    text-align: -webkit-center;
+}
+
+.btn-text{
+    font-size: 13px;
+    font-family: $leadlogic-font;
+    font-weight: 600;
+}
