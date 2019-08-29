@@ -69,7 +69,11 @@ export class DeviceIdentifierComponent implements OnInit {
     this.deviceService.registerDevice(this.user.clientId, this.user.projectId, formData)
     .subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
+        let auxRes:any = res;
+        this.user.deviceId = auxRes.Device_Id;
+        //console.log(this.user);
+        localStorage.setItem('userLogged', JSON.stringify(this.user));
         this.goToSearch();
       },
       err => {

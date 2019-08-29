@@ -20,6 +20,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatRippleModule} from '@angular/material/core';
 import {MatCardModule} from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatChipsModule} from '@angular/material/chips';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -45,6 +47,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatRippleModule,
     MatCardModule,
     MatTabsModule,
+    MatChipsModule,
+    MatGridListModule,
     FlexLayoutModule
   ],
   exports: [
@@ -66,6 +70,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatRippleModule,
     MatCardModule,
     MatTabsModule,
+    MatChipsModule,
+    MatGridListModule,
     FlexLayoutModule
   ]
 })

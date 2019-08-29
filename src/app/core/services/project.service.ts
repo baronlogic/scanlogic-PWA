@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
-import { environment } from '../../environments/environment';
+import { environment } from '../../../environments/environment';
 
 const API_URL = environment.apiUrl;
 
@@ -23,5 +23,10 @@ export class ProjectService {
   getAllProjectRecords(clientId: string){
     return this.http.get(API_URL+clientId+'-NONE-2-/'+ENDPOINT_NAME, httpOptions);
   }
+
+  getProjectStatistics(clientId: string, projectId: string){
+    return this.http.get(API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME+'/'+projectId+'/statistics', httpOptions);
+  }
+
 
 }

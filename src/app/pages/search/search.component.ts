@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ParticipantService } from 'src/app/core/services/participant.service';
+import { ProjectService } from 'src/app/core/services/project.service';
 
 @Component({
   selector: 'app-search',
@@ -15,6 +16,7 @@ export class SearchComponent implements OnInit {
 
   user: any;
   participants: any;
+  statistics: any;
 
   searchForm: FormGroup;
 
@@ -22,6 +24,7 @@ export class SearchComponent implements OnInit {
     private router: Router,
     public snackBar: MatSnackBar,
     private formBuilder: FormBuilder,
+    private projectService: ProjectService,
     private participantService: ParticipantService
   ) { }
 
@@ -33,7 +36,7 @@ export class SearchComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('userLogged'));
     //console.log(this.user);
     this.getParticipants();
-
+    this.getStatistics();
     this.searchForm = this.formBuilder.group({
       Search_Term: ['']
     });
@@ -64,7 +67,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchParticipant(){
-    console.log(this.searchForm.get('Search_Term').value);
+    //console.log(this.searchForm.get('Search_Term').value);
     if(this.searchForm.get('Search_Term').value == '' || this.searchForm.get('Search_Term').value == null){
       this.openSnackBar('Please fill in the search field');
       this.getParticipants();
@@ -77,13 +80,26 @@ export class SearchComponent implements OnInit {
     this.participantService.searchForAParticipant(this.user.clientId, this.user.projectId, formData)
     .subscribe(
       res => {
-        console.log(res);
+        //console.log(res);
         this.participants = res;
         this.searchForm.reset();
       },
       err => {
-        console.log(err);
+        //console.log(err);
         this.searchForm.reset();
+      }
+    );
+  }
+
+  getStatistics(){
+    this.projectService.getProjectStatistics(this.user.clientId, this.user.projectId)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.statistics = res;
+      },
+      err => {
+        console.log(err);
       }
     );
   }

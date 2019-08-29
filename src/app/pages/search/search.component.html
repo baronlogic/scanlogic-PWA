@@ -12,6 +12,26 @@
                 <input matInput formControlName="Search_Term" class="form-control">
             </mat-form-field>
         </form>
+        <div *ngIf="statistics" class="width-100" fxLayout="row" fxLayoutAlign="space-between center">
+            <mat-card class="lead-font mini-card bg-orange">
+                <mat-card-content class="text-center">
+                    <mat-card-title class="text-center list-font fw-600">TOTAL</mat-card-title>
+                    <mat-card-subtitle class="fw-600">{{ statistics.Total_Participants_Overall }}</mat-card-subtitle>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="lead-font mini-card bg-green">
+                <mat-card-content class="text-center">
+                    <mat-card-title class="text-center list-font fw-600">LIVE</mat-card-title>
+                    <mat-card-subtitle class="fw-600">{{ statistics.Total_Participants }}</mat-card-subtitle>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="lead-font mini-card bg-red">
+                <mat-card-content class="text-center">
+                    <mat-card-title class="text-center list-font fw-600">NON-LIVE</mat-card-title>
+                    <mat-card-subtitle class="fw-600">{{ statistics.Total_None_Live_Participants }}</mat-card-subtitle>
+                </mat-card-content>
+            </mat-card>
+        </div>
         <div fxFill>
             <mat-card class="my-10 lead-font" *ngFor="let participant of participants">
                 <mat-card-header class="text-left">
