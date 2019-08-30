@@ -3,9 +3,9 @@
         <mat-toolbar>
             <span class="spacer"></span>
         </mat-toolbar>
-        <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+        <mat-progress-bar *ngIf="!(statistics && participants) || bLoading" mode="indeterminate"></mat-progress-bar>
     </div>
-    <div class="width-100 content text-center" fxLayout="column" fxLayoutAlign=" center">
+    <div *ngIf="statistics && participants" class="width-100 content text-center slide-in-fwd-center" fxLayout="column" fxLayoutAlign=" center">
         <form class="width-100" [formGroup]="searchForm" (ngSubmit)="searchParticipant()">
             <mat-form-field appearance="outline" class="mt-10">
                 <mat-label>Enter search term</mat-label>
@@ -53,15 +53,15 @@
     <div class="width-100 footer">
         <mat-toolbar>
             <span class="spacer"></span>
-            <button mat-icon-button>
+            <button mat-icon-button disabled>
                 <mat-icon>search</mat-icon>
             </button>
             <span class="spacer"></span>
-            <button mat-icon-button>
+            <button mat-icon-button  (click)="goToStatistics()">
                 <mat-icon>insert_chart_outlined</mat-icon>
             </button>
             <span class="spacer"></span>
-            <button mat-icon-button>
+            <button mat-icon-button (click)="goToScan()">
                 <mat-icon>center_focus_weak</mat-icon>
             </button>
             <span class="spacer"></span>

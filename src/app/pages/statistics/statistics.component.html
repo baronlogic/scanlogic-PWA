@@ -1,0 +1,37 @@
+<div fxFill class="slide-in-fwd-center" fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="width-100 header">
+        <mat-toolbar>
+            <span class="spacer"></span>
+        </mat-toolbar>
+        <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="width-100 content text-center slide-in-fwd-center" fxLayout="column" fxLayoutAlign=" center">
+        <form class="width-100" [formGroup]="statisticsForm">
+            <mat-form-field appearance="outline" class="mt-10">
+                <mat-label>Email this list to</mat-label>
+                <input matInput formControlName="email_this" class="form-control">
+            </mat-form-field>
+        </form>
+    </div>     
+    <div class="width-100 footer">
+        <mat-toolbar>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="goToSearch()">
+                <mat-icon>search</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-icon-button  disabled>
+                <mat-icon>insert_chart_outlined</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="goToScan()">
+                <mat-icon>center_focus_weak</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-icon-button>
+                <mat-icon>settings</mat-icon>
+            </button>
+            <span class="spacer"></span>
+        </mat-toolbar>
+    </div>
+</div>

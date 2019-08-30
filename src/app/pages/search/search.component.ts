@@ -20,6 +20,8 @@ export class SearchComponent implements OnInit {
 
   searchForm: FormGroup;
 
+  bLoading = false;
+
   constructor(
     private router: Router,
     public snackBar: MatSnackBar,
@@ -52,6 +54,18 @@ export class SearchComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  goToStatistics() {
+    this.router.navigate(['pages/statistics']);
+  }
+
+  goToScan() {
+    this.router.navigate(['pages/scan']);
+  }
+
+  goToSettings() {
+    this.router.navigate(['settings']);
+  }
+
   getParticipants(){
     this.participantService.GetAllParticipantRecords(this.user.clientId, this.user.projectId)
     .subscribe(
@@ -67,10 +81,12 @@ export class SearchComponent implements OnInit {
   }
 
   searchParticipant(){
+    this.bLoading = true;
     //console.log(this.searchForm.get('Search_Term').value);
     if(this.searchForm.get('Search_Term').value == '' || this.searchForm.get('Search_Term').value == null){
       this.openSnackBar('Please fill in the search field');
       this.getParticipants();
+      this.bLoading = false;
       return;
     }
 
@@ -81,12 +97,31 @@ export class SearchComponent implements OnInit {
     .subscribe(
       res => {
         //console.log(res);
+
+        let aux: any = res;
+
+        if(aux.length == 0){
+          this.openSnackBar("No matches found");
+          this.searchForm.reset();
+          this.bLoading = false;
+          return;
+        }
+
         this.participants = res;
+        
+        if(this.participants.length == 1){
+          this.openSnackBar("We found "+this.participants.length+" match");
+        }
+        else if(this.participants.length > 1){
+          this.openSnackBar("We found "+this.participants.length+" matches");
+        }
         this.searchForm.reset();
+        this.bLoading = false;
       },
       err => {
         //console.log(err);
         this.searchForm.reset();
+        this.bLoading = false;
       }
     );
   }

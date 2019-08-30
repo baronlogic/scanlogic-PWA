@@ -1,10 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SearchComponent } from './search/search.component';
+import { StatisticsComponent } from './statistics/statistics.component';
+import { ScanComponent } from './scan/scan.component';
 
 
 const routes: Routes = [
-  { path: 'search', component: SearchComponent }
+  { path: 'search', component: SearchComponent },
+  { path: 'statistics', component: StatisticsComponent },
+  { path: 'scan', component: ScanComponent }
 ];
 
 @NgModule({
