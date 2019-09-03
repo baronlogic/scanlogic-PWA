@@ -1,8 +1,8 @@
 {
-  "name": "scanlogic-pwa",
-  "short_name": "scanlogic-pwa",
-  "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "name": "Scanlogic",
+  "short_name": "scanlogic",
+  "theme_color": "#FD814C",
+  "background_color": "#F5F5F5",
   "display": "standalone",
   "scope": "/",
   "start_url": "/",
