@@ -24,4 +24,8 @@ export class AuthService {
     return this.http.post(API_URL+clientId+'-NONE-2-/'+ENDPOINT_NAME+'/login/', user, httpOptions);
   }
 
+  validateUserWithoutClientId(user: any){
+    return this.http.post(API_URL+'NONE-NONE-2-/User/login/', user, httpOptions);
+  }
+
 }
