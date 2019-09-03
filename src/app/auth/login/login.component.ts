@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       Client_Id: ['']
     });
 
-    console.log(this.checkingInputEmail());
+    console.log(this.signInForm.value.Client_Id);
 
   }
 
@@ -57,6 +57,16 @@ export class LoginComponent implements OnInit {
 
   checkingInputEmail(){
     if(/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/igm.test(this.signInForm.get('Email').value)){
+      return true;
+    }
+    else{
+      this.signInForm.controls['Client_Id'].setValue('');
+      return false;
+    }
+  }
+
+  checkInputClientId(){
+    if(this.signInForm.value.Client_Id == ''){
       return true;
     }
     else{
