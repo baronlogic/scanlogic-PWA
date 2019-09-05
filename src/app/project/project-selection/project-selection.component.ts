@@ -41,6 +41,11 @@ export class ProjectSelectionComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
+
   goToDeviceName(){
     this.router.navigate(['settings/device']);
   }

@@ -81,7 +81,7 @@ export class LoginComponent implements OnInit {
     formData.append('email', this.signInForm.get('Email').value);
     formData.append('password', this.signInForm.get('Password').value);
 
-    //console.log(this.signInForm.value);
+    console.log(this.signInForm.value);
 
     //If we log in with an email
     if(this.checkingInputEmail()){
@@ -90,7 +90,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           this.bSignIn = false;
-          //console.log(res);
+          console.log(res);
           this.auxRes = res;
           if(this.auxRes.type == 'error'){
             this.openSnackBar(this.auxRes.message);
@@ -107,7 +107,7 @@ export class LoginComponent implements OnInit {
         },
         err => {
           this.bSignIn = false;
-          //console.log(err);
+          console.log(err);
           this.openSnackBar(err.message);
         }
       );
@@ -120,7 +120,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         res => {
           this.bSignIn = false;
-          //console.log(res);
+          console.log(res);
           this.auxRes = res;
           if(this.auxRes.type == 'error'){
             this.openSnackBar(this.auxRes.message);
@@ -137,7 +137,7 @@ export class LoginComponent implements OnInit {
         },
         err => {
           this.bSignIn = false;
-          //console.log(err);
+          console.log(err);
           this.openSnackBar(err.message);
         }
       );

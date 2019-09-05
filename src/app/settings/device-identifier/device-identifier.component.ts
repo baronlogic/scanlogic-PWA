@@ -35,8 +35,17 @@ export class DeviceIdentifierComponent implements OnInit {
     this.getIP();
   }
 
-  goToSearch(){
-    this.router.navigate(['pages/search']);
+  goToScannerMode(){
+    this.router.navigate(['settings/scanner']);
+  }
+
+  goToProjectSelection(){
+    this.router.navigate(['/project']);
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['']);
   }
 
   getIP(){
@@ -74,7 +83,7 @@ export class DeviceIdentifierComponent implements OnInit {
         this.user.deviceId = auxRes.Device_Id;
         //console.log(this.user);
         localStorage.setItem('userLogged', JSON.stringify(this.user));
-        this.goToSearch();
+        this.goToScannerMode();
       },
       err => {
         console.log(err);
