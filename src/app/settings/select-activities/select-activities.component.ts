@@ -4,19 +4,19 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-repeat-scans',
-  templateUrl: './repeat-scans.component.html',
-  styleUrls: ['./repeat-scans.component.scss']
+  selector: 'app-select-activities',
+  templateUrl: './select-activities.component.html',
+  styleUrls: ['./select-activities.component.scss']
 })
-export class RepeatScansComponent implements OnInit {
+export class SelectActivitiesComponent implements OnInit {
 
   modes: any[] = [
-    {value: 0, viewValue: 'Allow repeat scans'},
-    {value: 1, viewValue: 'Do not allow repeat scans'}
+    {value: 0, viewValue: 'Check has all Activities'},
+    {value: 1, viewValue: 'Check has atleast one Activity'}
   ];
 
   user: any;
-  repeatForm: FormGroup;
+  activityForm: FormGroup;
 
   constructor(
     private router: Router,
@@ -26,17 +26,17 @@ export class RepeatScansComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('userLogged'));
-    this.repeatForm = this.formBuilder.group({
-      Scanner_Repeat: ['', Validators.required]
+    this.activityForm = this.formBuilder.group({
+      Activity_Settings: ['', Validators.required]
     });
-  }
-
-  goToScannerMode(){
-    this.router.navigate(['settings/scanner']);
   }
 
   goToActivitySettings(){
     this.router.navigate(['settings/activity']);
+  }
+
+  goToSearch(){
+    this.router.navigate(['pages/search']);
   }
 
   logout(){
@@ -45,15 +45,16 @@ export class RepeatScansComponent implements OnInit {
   }
 
   resetDeviceName(){
-    this.repeatForm.reset();
+    this.activityForm.reset();
   }
 
-  handleRepeat(){
+  handleActivity(){
     //console.log(this.repeatForm.value);
-    this.user.scannerRepeat = this.repeatForm.get('Scanner_Repeat').value;
+    //this.user.activitySettings = this.activityForm.get('Activity_Settings').value;
     //console.log(this.user);
-    localStorage.setItem('userLogged', JSON.stringify(this.user));
-    this.goToActivitySettings();
+    //localStorage.setItem('userLogged', JSON.stringify(this.user));
+    this.goToSearch();
+
   }
 
 }

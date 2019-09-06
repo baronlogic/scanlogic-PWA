@@ -1,7 +1,7 @@
 <div fxFill fxFill class="slide-in-fwd-center" fxLayout="column" fxLayoutAlign="space-between center">
     <div class="width-100 header">
         <mat-toolbar>
-            <button class="ml--15" mat-icon-button (click)="goToScannerMode()">
+            <button class="ml--15" mat-icon-button (click)="goToRepeatScans()">
                 <mat-icon>navigate_before</mat-icon>
             </button>
             <span class="spacer"></span>
@@ -14,24 +14,25 @@
         <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
     </div>
     <div class="width-100 content text-center" fxLayout="column" fxLayoutAlign="space-evenly center">
-        <h3 class="lead-font text-dark text-center">Step 3: Repeat Scans</h3>
-        <span class="subtitle text-center"><strong class="bold">Repeat Scans</strong> will either enable or disable checking the number of scans allowed for each delegate based off the number of bookings made for each activity</span>
-        <form [formGroup]="repeatForm" (ngSubmit)="handleRepeat()" fxLayout="column" fxLayoutAlign="space-evenly center">
+        <h3 class="lead-font text-dark text-center">Step 4: Activity Settings</h3>
+        <span class="subtitle text-center">If you would like to check activites for each scanned delegate, then select the activities for this specific device from the list below</span>
+        <span class="subtitle text-center">There are two types of checks: Check and make sure delegate has all activity, or to check if delegate has atleast one of the following</span>
+        <form [formGroup]="activityForm" (ngSubmit)="handleActivity()" fxLayout="column" fxLayoutAlign="space-evenly center">
             <mat-form-field appearance="outline">
-                <mat-label>Repeat Scans</mat-label>
-                <mat-select formControlName="Scanner_Repeat">
+                <mat-label>Activity Settings</mat-label>
+                <mat-select formControlName="Activity_Settings">
                     <mat-option *ngFor="let mode of modes" [value]="mode.value">
                         {{mode.viewValue}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <!--<span class="subtitle text-center">You selected: {{this.repeatForm.get('Scanner_Repeat').value}}</span>-->
+            <!--<span class="subtitle text-center">You selected: {{this.activityForm.get('Scanner_Repeat').value}}</span>-->
             <div fxFill fxLayout="row" fxLayoutAlign="center center">
-                <button (click)="resetDeviceName()" type="button" class="second-btn" mat-raised-button [disabled]="!repeatForm.valid">
+                <button (click)="resetDeviceName()" type="button" class="second-btn" mat-raised-button [disabled]="!activityForm.valid">
                     <span *ngIf="true" class="btn-text">RESET</span>
                     <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
                 </button>
-                <button class="submit-btn" mat-raised-button [disabled]="!repeatForm.valid">
+                <button class="submit-btn" mat-raised-button [disabled]="!activityForm.valid">
                     <span *ngIf="true" class="btn-text">SAVE</span>
                     <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
                 </button>

@@ -4,19 +4,19 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-scanner-mode',
-  templateUrl: './scanner-mode.component.html',
-  styleUrls: ['./scanner-mode.component.scss']
+  selector: 'app-activity-settings',
+  templateUrl: './activity-settings.component.html',
+  styleUrls: ['./activity-settings.component.scss']
 })
-export class ScannerModeComponent implements OnInit {
+export class ActivitySettingsComponent implements OnInit {
 
   modes: any[] = [
-    {value: 0, viewValue: 'Access Control Mode'},
-    {value: 1, viewValue: 'Access Tracking Mode'}
+    {value: 0, viewValue: 'Check has all Activities'},
+    {value: 1, viewValue: 'Check has atleast one Activity'}
   ];
 
   user: any;
-  modeForm: FormGroup;
+  activityForm: FormGroup;
 
   constructor(
     private router: Router,
@@ -26,17 +26,17 @@ export class ScannerModeComponent implements OnInit {
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('userLogged'));
-    this.modeForm = this.formBuilder.group({
-      Scanner_Mode: ['', Validators.required]
+    this.activityForm = this.formBuilder.group({
+      Activity_Settings: ['', Validators.required]
     });
-  }
-
-  goToDeviceName(){
-    this.router.navigate(['settings/device']);
   }
 
   goToRepeatScans(){
     this.router.navigate(['settings/repeat']);
+  }
+
+  goToSelectActivities(){
+    this.router.navigate(['settings/select-activities']);
   }
 
   logout(){
@@ -45,21 +45,15 @@ export class ScannerModeComponent implements OnInit {
   }
 
   resetDeviceName(){
-    this.modeForm.reset();
+    this.activityForm.reset();
   }
 
-  handleMode(){
-    //console.log(this.modeForm.value);
-    this.user.scannerMode = this.modeForm.get('Scanner_Mode').value;
+  handleActivity(){
+    //console.log(this.repeatForm.value);
+    this.user.activitySettings = this.activityForm.get('Activity_Settings').value;
     //console.log(this.user);
     localStorage.setItem('userLogged', JSON.stringify(this.user));
-    if(this.user.scannerMode == 0){
-      this.goToRepeatScans();
-    }
-    else{
-      console.log('PASO 5');
-    }
-    
+    this.goToSelectActivities();
   }
 
 }
