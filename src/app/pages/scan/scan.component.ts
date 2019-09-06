@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-scan',
@@ -7,9 +11,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScanComponent implements OnInit {
 
-  constructor() { }
+  scanForm: FormGroup;
+
+  constructor(
+    private router: Router,
+    public snackBar: MatSnackBar,
+    private formBuilder: FormBuilder
+  ) { }
 
   ngOnInit() {
+    this.scanForm = this.formBuilder.group({
+      email_this: ['']
+    });
+  }
+
+  goToLogin() {
+    this.router.navigate(['']);
+  }
+
+  goToSearch() {
+    this.router.navigate(['pages/search']);
+  }
+
+  goToStatistics() {
+    this.router.navigate(['pages/statistics']);
+  }
+
+  goToSettings() {
+    this.router.navigate(['settings']);
   }
 
 }

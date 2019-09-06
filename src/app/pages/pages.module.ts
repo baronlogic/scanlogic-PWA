@@ -5,10 +5,11 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { PagesRoutingModule } from './pages-routing.module';
 import { SearchComponent } from './search/search.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-
-import { SharedModule } from '../shared/shared.module';
 import { ScanComponent } from './scan/scan.component';
 
+import { SharedModule } from '../shared/shared.module';
+
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   declarations: [SearchComponent, StatisticsComponent, ScanComponent],
@@ -16,7 +17,8 @@ import { ScanComponent } from './scan/scan.component';
     CommonModule,
     PagesRoutingModule,
     ReactiveFormsModule,
-    SharedModule
+    SharedModule,
+    ZXingScannerModule
   ]
 })
 export class PagesModule { }
