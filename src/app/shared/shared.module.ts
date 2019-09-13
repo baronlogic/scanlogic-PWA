@@ -23,6 +23,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatStepperModule} from '@angular/material/stepper';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 import { FlexLayoutModule } from "@angular/flex-layout";
 
@@ -51,6 +52,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatChipsModule,
     MatGridListModule,
     MatStepperModule,
+    MatExpansionModule,
     FlexLayoutModule
   ],
   exports: [
@@ -75,6 +77,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MatChipsModule,
     MatGridListModule,
     MatStepperModule,
+    MatExpansionModule,
     FlexLayoutModule
   ]
 })

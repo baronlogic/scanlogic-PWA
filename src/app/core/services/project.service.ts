@@ -28,5 +28,12 @@ export class ProjectService {
     return this.http.get(API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME+'/'+projectId+'/statistics', httpOptions);
   }
 
+  getProjectScanStatistics(clientId: string, projectId: string){
+    return this.http.get(API_URL+clientId+'-'+projectId+'-2-/ProjectScanStatistics', httpOptions);
+  }
+
+  getProjectScanDistinctStatistics(clientId: string, projectId: string){
+    return this.http.get(API_URL+clientId+'-'+projectId+'-2-/ProjectScanDistinctStatistics', httpOptions);
+  }
 
 }

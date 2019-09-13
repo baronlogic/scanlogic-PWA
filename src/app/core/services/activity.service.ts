@@ -6,7 +6,7 @@ import { environment } from '../../../environments/environment';
 
 const API_URL = environment.apiUrl;
 
-const ENDPOINT_NAME = 'Participants';
+const ENDPOINT_NAME = 'Activities';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -17,16 +17,19 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class ParticipantService {
+export class ActivityService {
 
   constructor(private http: HttpClient) { }
 
-  GetAllParticipantRecords(clientId: string, projectId: string){
-    return this.http.get(API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME, httpOptions);
-  }
-
-  searchForAParticipant(clientId: string, projectId: string, stringToSearch: any){
-    return this.http.post(API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME+'/Search', stringToSearch, httpOptions);
+  getActivities(clientId: string, projectId: string){
+    return this.http.get(API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME, httpOptions).pipe(
+      map(
+        (resp: any) => { 
+          let activities = resp.filter(value => value.Scan == 1);
+          return activities;
+        }
+      )
+    );
   }
 
 }

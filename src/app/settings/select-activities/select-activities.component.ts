@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { ActivityService } from 'src/app/core/services/activity.service';
+
 @Component({
   selector: 'app-select-activities',
   templateUrl: './select-activities.component.html',
@@ -10,25 +12,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class SelectActivitiesComponent implements OnInit {
 
-  modes: any[] = [
-    {value: 0, viewValue: 'Check has all Activities'},
-    {value: 1, viewValue: 'Check has atleast one Activity'}
-  ];
+  activities: any[];
 
   user: any;
-  activityForm: FormGroup;
+  selectForm: FormGroup;
 
   constructor(
     private router: Router,
     public snackBar: MatSnackBar,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private activityService: ActivityService
   ) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('userLogged'));
-    this.activityForm = this.formBuilder.group({
-      Activity_Settings: ['', Validators.required]
+    this.selectForm = this.formBuilder.group({
+      Select_Activities: ['']
     });
+    this.getActivities();
   }
 
   goToActivitySettings(){
@@ -44,17 +45,38 @@ export class SelectActivitiesComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  resetDeviceName(){
-    this.activityForm.reset();
+  resetSelect(){
+    this.selectForm.reset();
   }
 
-  handleActivity(){
-    //console.log(this.repeatForm.value);
-    //this.user.activitySettings = this.activityForm.get('Activity_Settings').value;
-    //console.log(this.user);
-    //localStorage.setItem('userLogged', JSON.stringify(this.user));
-    this.goToSearch();
+  handleResetButton(){
+    if(this.selectForm.get('Select_Activities').value == '' || this.selectForm.get('Select_Activities').value == []){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 
+  getActivities(){
+    this.activityService.getActivities(this.user.clientId, this.user.projectId)
+    .subscribe(
+      res => {
+        console.log(res);
+        this.activities = res;
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+
+  handleSelect(){
+    this.user.selectActivities = this.selectForm.get('Select_Activities').value;
+    console.log(this.user);
+    localStorage.setItem('userLogged', JSON.stringify(this.user));
+    this.goToSearch();
   }
 
 }

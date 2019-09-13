@@ -11,8 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ScannerModeComponent implements OnInit {
 
   modes: any[] = [
-    {value: 0, viewValue: 'Access Control Mode'},
-    {value: 1, viewValue: 'Access Tracking Mode'}
+    {value: 'access_control_mode', viewValue: 'Access Control Mode'},
+    {value: 'access_tracking_mode', viewValue: 'Access Tracking Mode'}
   ];
 
   user: any;
@@ -39,12 +39,16 @@ export class ScannerModeComponent implements OnInit {
     this.router.navigate(['settings/repeat']);
   }
 
+  goToSelectActivities(){
+    this.router.navigate(['settings/select-activities']);
+  }
+
   logout(){
     localStorage.clear();
     this.router.navigate(['']);
   }
 
-  resetDeviceName(){
+  resetScannerMode(){
     this.modeForm.reset();
   }
 
@@ -53,11 +57,11 @@ export class ScannerModeComponent implements OnInit {
     this.user.scannerMode = this.modeForm.get('Scanner_Mode').value;
     //console.log(this.user);
     localStorage.setItem('userLogged', JSON.stringify(this.user));
-    if(this.user.scannerMode == 0){
+    if(this.user.scannerMode == 'access_control_mode'){
       this.goToRepeatScans();
     }
     else{
-      console.log('PASO 5');
+      this.goToSelectActivities();
     }
     
   }

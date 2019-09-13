@@ -1,8 +1,49 @@
 $leadlogic-font: 'Montserrat', sans-serif;
 $leadlogic-orange: #FD814C;
 
+.w-90{
+    width: 90%;
+}
+
+.ml-5{
+    margin-left: 5%;
+}
+
 mat-form-field.mat-form-field {
     font-size: 12px;
     font-family: $leadlogic-font;
     width: 90%;
+}
+
+.sl-btn{
+    background-color: $leadlogic-orange;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    margin-left: auto;
+    margin-right: 25px;
+    margin-top: auto;
+    margin-bottom: 25px;
+}
+
+.center-btn{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 99;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+:host ::ng-deep video {
+    border-radius: 15px;
+    width: 250px !important;
+    height: 250px !important;
 }

@@ -17,6 +17,7 @@
         <h3 class="lead-font text-dark text-center">Step 4: Activity Settings</h3>
         <span class="subtitle text-center">If you would like to check activites for each scanned delegate, then select the activities for this specific device from the list below</span>
         <span class="subtitle text-center">There are two types of checks: Check and make sure delegate has all activity, or to check if delegate has atleast one of the following</span>
+        <br>
         <form [formGroup]="activityForm" (ngSubmit)="handleActivity()" fxLayout="column" fxLayoutAlign="space-evenly center">
             <mat-form-field appearance="outline">
                 <mat-label>Activity Settings</mat-label>
@@ -28,7 +29,7 @@
             </mat-form-field>
             <!--<span class="subtitle text-center">You selected: {{this.activityForm.get('Scanner_Repeat').value}}</span>-->
             <div fxFill fxLayout="row" fxLayoutAlign="center center">
-                <button (click)="resetDeviceName()" type="button" class="second-btn" mat-raised-button [disabled]="!activityForm.valid">
+                <button (click)="resetActivitySettings()" type="button" class="second-btn" mat-raised-button [disabled]="!activityForm.valid">
                     <span *ngIf="true" class="btn-text">RESET</span>
                     <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
                 </button>

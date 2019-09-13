@@ -21,12 +21,12 @@ export class DeviceService {
 
   constructor(private http: HttpClient) { }
 
-  registerDevice(clientId: string, ProjectId: string, device: any){
-    return this.http.post(API_URL+clientId+'-'+ProjectId+'-2-/'+ENDPOINT_NAME, device, httpOptions);
+  registerDevice(clientId: string, projectId: string, device: any){
+    return this.http.post(API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME, device, httpOptions);
   }
 
-  getAllDevices(clientId: string, ProjectId: string){
-    return this.http.get(API_URL+clientId+'-'+ProjectId+'-2-/'+ENDPOINT_NAME, httpOptions);
+  getAllDevices(clientId: string, projectId: string){
+    return this.http.get(API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME, httpOptions);
   }
 
   getIP(){
@@ -37,5 +37,16 @@ export class DeviceService {
         }
       )
     )
+  }
+
+  getDeviceScanDistinctStatistics(clientId: string, projectId: string){
+    return this.http.get(API_URL+clientId+'-'+projectId+'-2-/DeviceScanDistinctStatistics', httpOptions).pipe(
+      map(
+        (resp: any) => { 
+          //console.log(Object.values(resp))
+          return Object.values(resp);
+        }
+      )
+    );
   }
 }

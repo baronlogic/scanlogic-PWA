@@ -27,7 +27,7 @@
             </mat-form-field>
             <!--<span class="subtitle text-center">You selected: {{this.repeatForm.get('Scanner_Repeat').value}}</span>-->
             <div fxFill fxLayout="row" fxLayoutAlign="center center">
-                <button (click)="resetDeviceName()" type="button" class="second-btn" mat-raised-button [disabled]="!repeatForm.valid">
+                <button (click)="resetRepeatScans()" type="button" class="second-btn" mat-raised-button [disabled]="!repeatForm.valid">
                     <span *ngIf="true" class="btn-text">RESET</span>
                     <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
                 </button>

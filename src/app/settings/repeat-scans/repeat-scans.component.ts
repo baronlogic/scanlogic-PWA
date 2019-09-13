@@ -11,8 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class RepeatScansComponent implements OnInit {
 
   modes: any[] = [
-    {value: 0, viewValue: 'Allow repeat scans'},
-    {value: 1, viewValue: 'Do not allow repeat scans'}
+    {value: 'allow', viewValue: 'Allow repeat scans'},
+    {value: 'do_not_allow', viewValue: 'Do not allow repeat scans'}
   ];
 
   user: any;
@@ -44,7 +44,7 @@ export class RepeatScansComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  resetDeviceName(){
+  resetRepeatScans(){
     this.repeatForm.reset();
   }
 

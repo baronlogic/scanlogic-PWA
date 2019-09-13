@@ -28,7 +28,7 @@
             </mat-form-field>
             <!--<span class="subtitle text-center">You selected: {{this.modeForm.get('Scanner_Mode').value}}</span>-->
             <div fxFill fxLayout="row" fxLayoutAlign="center center">
-                <button (click)="resetDeviceName()" type="button" class="second-btn" mat-raised-button [disabled]="!modeForm.valid">
+                <button (click)="resetScannerMode()" type="button" class="second-btn" mat-raised-button [disabled]="!modeForm.valid">
                     <span *ngIf="true" class="btn-text">RESET</span>
                     <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
                 </button>

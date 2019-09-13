@@ -11,8 +11,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ActivitySettingsComponent implements OnInit {
 
   modes: any[] = [
-    {value: 0, viewValue: 'Check has all Activities'},
-    {value: 1, viewValue: 'Check has atleast one Activity'}
+    {value: 'check_all', viewValue: 'Check has all Activities'},
+    {value: 'check_single', viewValue: 'Check has atleast one Activity'}
   ];
 
   user: any;
@@ -44,7 +44,7 @@ export class ActivitySettingsComponent implements OnInit {
     this.router.navigate(['']);
   }
 
-  resetDeviceName(){
+  resetActivitySettings(){
     this.activityForm.reset();
   }
 
