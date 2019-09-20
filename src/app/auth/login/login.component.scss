@@ -20,7 +20,7 @@ $leadlogic-orange: #FD814C;
 
 .width-login-btn{
     margin-top: 20px;
-    width: 204px;
+    width: 250px;
     height: 45PX;
     background-color: $leadlogic-orange;
     text-align: -webkit-center;
@@ -35,4 +35,7 @@ $leadlogic-orange: #FD814C;
 :host ::ng-deep .mat-form-field-wrapper{
     padding-bottom: 0;
 }
-  
+
+.trans{
+    color: transparent;
+}

@@ -26,7 +26,10 @@ export class DeviceIdentifierComponent implements OnInit {
   { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('userLogged'));
+    if(localStorage.getItem('userLogged')){
+      this.user = JSON.parse(localStorage.getItem('userLogged'));
+      this.selectStep();
+    }
     this.deviceForm = this.formBuilder.group({
       Device_Name: ['', Validators.required],
       User_Agent: [''],
@@ -35,17 +38,68 @@ export class DeviceIdentifierComponent implements OnInit {
     this.getIP();
   }
 
-  goToScannerMode(){
-    this.router.navigate(['settings/scanner']);
+  selectStep(){
+    if(!this.user.id && !this.user.clientId){
+      this.goToLogin();
+      return;
+    }
+    else if(!this.user.projectId){
+      this.goToProjectSelection();
+      return;
+    }
+    else if(!this.user.deviceId && !this.user.deviceName){
+      this.goToDeviceName();
+      return;
+    }
+    else if(!this.user.scannerMode){
+      this.goToScannerMode();
+      return;
+    }
+    else if(!this.user.scannerRepeat){
+      this.goToRepeatScans();
+      return;
+    }
+    else if(!this.user.activitySettings){
+      this.goToActivitySettings();
+      return;
+    }
+    else if(!this.user.selectActivities){
+      this.goToSelectActivities();
+      return;
+    }
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['']);
+  }
+
+  goToLogin(){
+    this.router.navigate(['']);
   }
 
   goToProjectSelection(){
     this.router.navigate(['/project']);
   }
 
-  logout(){
-    localStorage.clear();
-    this.router.navigate(['']);
+  goToDeviceName(){
+    this.router.navigate(['settings/device']);
+  }
+
+  goToScannerMode(){
+    this.router.navigate(['settings/scanner']);
+  }
+
+  goToRepeatScans(){
+    this.router.navigate(['settings/repeat']);
+  }
+
+  goToActivitySettings(){
+    this.router.navigate(['settings/activity']);
+  }
+
+  goToSelectActivities(){
+    this.router.navigate(['settings/select-activities']);
   }
 
   getIP(){

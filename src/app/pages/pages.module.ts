@@ -10,9 +10,10 @@ import { ScanComponent } from './scan/scan.component';
 import { SharedModule } from '../shared/shared.module';
 
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { SettingsComponent } from './settings/settings.component';
 
 @NgModule({
-  declarations: [SearchComponent, StatisticsComponent, ScanComponent],
+  declarations: [SearchComponent, StatisticsComponent, ScanComponent, SettingsComponent],
   imports: [
     CommonModule,
     PagesRoutingModule,

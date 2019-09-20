@@ -1,6 +1,8 @@
-<div fxFill class="slide-in-fwd-center" fxLayout="column" fxLayoutAlign="space-between center">
+<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
     <div class="width-100 header">
         <mat-toolbar>
+            <span class="spacer"></span>
+            <span class="sign-in-title text-center"><strong class="bold">Scan</strong>logic</span>
             <span class="spacer"></span>
         </mat-toolbar>
         <mat-progress-bar *ngIf="!(statistics && participants) || bLoading" mode="indeterminate"></mat-progress-bar>
@@ -53,19 +55,19 @@
     <div class="width-100 footer">
         <mat-toolbar>
             <span class="spacer"></span>
-            <button mat-icon-button disabled>
+            <button mat-icon-button disabled class="text-orange">
                 <mat-icon>search</mat-icon>
             </button>
             <span class="spacer"></span>
-            <button mat-icon-button  (click)="goToStatistics()">
+            <button mat-icon-button  (click)="goToStatistics()" class="text-dark">
                 <mat-icon>insert_chart_outlined</mat-icon>
             </button>
             <span class="spacer"></span>
-            <button mat-icon-button (click)="goToScan()">
+            <button mat-icon-button (click)="goToScan()" class="text-dark">
                 <mat-icon>center_focus_weak</mat-icon>
             </button>
             <span class="spacer"></span>
-            <button mat-icon-button>
+            <button mat-icon-button class="text-dark">
                 <mat-icon>settings</mat-icon>
             </button>
             <span class="spacer"></span>

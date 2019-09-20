@@ -22,11 +22,10 @@ export class ProjectSelectionComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if(!localStorage.getItem('userLogged')){
-      this.goToLogin();
-      return;
+    if(localStorage.getItem('userLogged')){
+      this.user = JSON.parse(localStorage.getItem('userLogged'));
+      this.selectStep();
     }
-    this.user = JSON.parse(localStorage.getItem('userLogged'));
     //console.log(this.user);
     this.getProjects(this.user.clientId);
   }
@@ -37,8 +36,35 @@ export class ProjectSelectionComponent implements OnInit {
     });
   }
 
-  goToLogin() {
-    this.router.navigate(['']);
+  selectStep(){
+    if(!this.user.id && !this.user.clientId){
+      this.goToLogin();
+      return;
+    }
+    else if(!this.user.projectId){
+      this.goToProjectSelection();
+      return;
+    }
+    else if(!this.user.deviceId && !this.user.deviceName){
+      this.goToDeviceName();
+      return;
+    }
+    else if(!this.user.scannerMode){
+      this.goToScannerMode();
+      return;
+    }
+    else if(!this.user.scannerRepeat){
+      this.goToRepeatScans();
+      return;
+    }
+    else if(!this.user.activitySettings){
+      this.goToActivitySettings();
+      return;
+    }
+    else if(!this.user.selectActivities){
+      this.goToSelectActivities();
+      return;
+    }
   }
 
   logout(){
@@ -46,8 +72,32 @@ export class ProjectSelectionComponent implements OnInit {
     this.router.navigate(['']);
   }
 
+  goToLogin(){
+    this.router.navigate(['']);
+  }
+
+  goToProjectSelection(){
+    this.router.navigate(['/project']);
+  }
+
   goToDeviceName(){
     this.router.navigate(['settings/device']);
+  }
+
+  goToScannerMode(){
+    this.router.navigate(['settings/scanner']);
+  }
+
+  goToRepeatScans(){
+    this.router.navigate(['settings/repeat']);
+  }
+
+  goToActivitySettings(){
+    this.router.navigate(['settings/activity']);
+  }
+
+  goToSelectActivities(){
+    this.router.navigate(['settings/select-activities']);
   }
 
   getProjects(clientId: string){
