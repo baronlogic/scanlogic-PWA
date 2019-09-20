@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
   }
 
   selectStep(){
-    if(!this.user.id && !this.user.clientId){
-      this.goToLogin();
+    if(this.user.id && this.user.clientId && this.user.projectId && this.user.deviceId && this.user.deviceName && this.user.scannerMode && this.user.scannerRepeat && this.user.activitySettings && this.user.selectActivities){
+      this.goToSearch();
       return;
     }
     else if(!this.user.projectId){
@@ -80,6 +80,10 @@ export class LoginComponent implements OnInit {
     this.snackBar.open(message, 'Close', {
       duration: 3000,
     });
+  }
+
+  goToSearch() {
+    this.router.navigate(['pages/search']);
   }
 
   goToLogin(){
