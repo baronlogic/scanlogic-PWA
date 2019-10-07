@@ -64,7 +64,7 @@ export class ScanComponent implements OnInit {
   }
 
   goToSettings() {
-    this.router.navigate(['settings']);
+    this.router.navigate(['pages/settings']);
   }
 
   handleCamera(){

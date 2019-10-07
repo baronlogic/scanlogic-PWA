@@ -63,7 +63,7 @@ export class SearchComponent implements OnInit {
   }
 
   goToSettings() {
-    this.router.navigate(['settings']);
+    this.router.navigate(['pages/settings']);
   }
 
   getParticipants(){

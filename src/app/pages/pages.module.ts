@@ -6,12 +6,11 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SearchComponent } from './search/search.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { ScanComponent } from './scan/scan.component';
+import { SettingsComponent } from './settings/settings.component';
 
 import { SharedModule } from '../shared/shared.module';
 
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
-import { SettingsComponent } from './settings/settings.component';
-
 @NgModule({
   declarations: [SearchComponent, StatisticsComponent, ScanComponent, SettingsComponent],
   imports: [
