@@ -1,0 +1,62 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="width-100 header">
+        <mat-toolbar>
+            <span class="spacer"></span>
+            <span class="sign-in-title text-center"><strong class="bold">Scan</strong>logic</span>
+            <span class="spacer"></span>
+        </mat-toolbar>
+        <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="width-100 content text-center slide-in-fwd-center" fxLayout="column" fxLayoutAlign=" center">
+        <mat-list class="width-100">
+            <mat-list-item>
+                <button class="width-100 bg-white font-larger" mat-button>About Shocklogic</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button class="width-100 bg-white font-larger" mat-button>Setup Device</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button class="width-100 bg-white font-larger" mat-button>Statisctics</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button class="width-100 bg-white font-larger" mat-button>Device Info</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button class="width-100 bg-white font-larger" mat-button>Offline Sync</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button class="width-100 bg-white font-larger" mat-button>Switch Project</button>
+            </mat-list-item>
+            <mat-list-item>
+                <button class="width-100 bg-white font-larger" mat-button>Onsite Documents</button>
+            </mat-list-item>
+            <br>
+            <mat-divider></mat-divider>
+            <br>
+            <mat-list-item>
+                <button class="width-100 bg-white font-larger" mat-button>Sign Out</button>
+            </mat-list-item>
+          </mat-list>
+    </div>     
+    <div class="width-100 footer">
+        <mat-toolbar>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="goToSearch()" class="text-dark">
+                <mat-icon>search</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-icon-button  (click)="goToStatistics()" class="text-dark">
+                <mat-icon>insert_chart_outlined</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="goToScan()" class="text-dark">
+                <mat-icon>center_focus_weak</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-icon-button disabled class="text-orange">
+                <mat-icon>settings</mat-icon>
+            </button>
+            <span class="spacer"></span>
+        </mat-toolbar>
+    </div>
+</div>

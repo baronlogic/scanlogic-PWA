@@ -1,0 +1,36 @@
+<div fxFill fxFill class="slide-in-fwd-center" fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="width-100 header">
+        <mat-toolbar>
+            <button class="ml--15" mat-icon-button (click)="goToProjectSelection()">
+                <mat-icon>navigate_before</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <span class="toolbar-text">Device Settings</span>
+            <span class="spacer"></span>
+            <button class="mr--15" mat-icon-button (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
+            </button>
+        </mat-toolbar>
+        <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div class="width-100 content text-center" fxLayout="column" fxLayoutAlign="space-evenly center">
+        <h3 class="lead-font text-dark text-center">Step 1: Device Name</h3>
+        <span class="subtitle text-center">Please enter an unique device name, corresponding to a location being scanned, or simply to identify who is using it</span>
+        <form [formGroup]="deviceForm" (ngSubmit)="handleDevice()" fxLayout="column" fxLayoutAlign="space-evenly center">
+            <mat-form-field appearance="outline">
+                <mat-label>Device Name</mat-label>
+                <input matInput formControlName="Device_Name" class="form-control">
+            </mat-form-field>
+            <div fxFill fxLayout="row" fxLayoutAlign="center center">
+                <button (click)="resetDeviceName()" type="button" class="second-btn" mat-raised-button [disabled]="!deviceForm.valid">
+                    <span *ngIf="true" class="btn-text">RESET</span>
+                    <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                </button>
+                <button class="submit-btn" mat-raised-button [disabled]="!deviceForm.valid">
+                    <span *ngIf="true" class="btn-text">CONTINUE</span>
+                    <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                </button>
+            </div>
+        </form>
+    </div>        
+</div>

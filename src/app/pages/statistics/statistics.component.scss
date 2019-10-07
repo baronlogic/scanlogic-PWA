@@ -1,0 +1,20 @@
+$leadlogic-font: 'Montserrat', sans-serif;
+$leadlogic-orange: #FD814C;
+
+mat-form-field.mat-form-field {
+    font-size: 12px;
+    font-family: $leadlogic-font;
+    width: 90%;
+}
+
+table {
+    width: 100%;
+}
+
+th.mat-header-cell {
+    text-align: center;
+}
+
+.h-40{
+    height: 40px;
+}

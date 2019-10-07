@@ -1,0 +1,133 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="width-100 header">
+        <mat-toolbar>
+            <span class="spacer"></span>
+            <span class="sign-in-title text-center"><strong class="bold">Scan</strong>logic</span>
+            <span class="spacer"></span>
+        </mat-toolbar>
+        <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div [hidden]="!this.activityBreakdown" class="width-100 content text-center slide-in-fwd-center" fxLayout="column" fxLayoutAlign=" center">
+        <form class="width-100" [formGroup]="statisticsForm">
+            <mat-form-field appearance="outline" class="mt-10">
+                <mat-label>Email this list to</mat-label>
+                <input matInput formControlName="email_this" class="form-control">
+            </mat-form-field>
+        </form>
+        <mat-list *ngIf="stats" role="list">
+            <mat-list-item class="lead-font" role="listitem">Scanned: {{ stats.Total_Scanned_In }}</mat-list-item>
+            <mat-list-item class="lead-font" role="listitem">Not scanned: {{ stats.Total_Not_Scanned }}</mat-list-item>
+            <mat-list-item class="lead-font" role="listitem">Total: {{ stats.Total_Participants }}</mat-list-item>
+            <mat-progress-bar class="h-40" mode="determinate" value="{{calculatePercentScanned()}}"></mat-progress-bar>
+            <span class="lead-font">{{calculatePercentScanned()}}% Scanned</span>
+        </mat-list>
+        <br>
+        <mat-accordion class="width-100">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="lead-font">
+                        Activity Breakdown
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <table mat-table [dataSource]="this.activityBreakdown" class="mat-elevation-z8 text-center lead-font">
+                     <!-- Activity Column -->
+                    <ng-container matColumnDef="Activity">
+                        <th mat-header-cell *matHeaderCellDef> Activity </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Activity_Name}} </td>
+                    </ng-container>
+                      
+                    <!-- Arrived Column -->
+                    <ng-container matColumnDef="Arrived">
+                        <th mat-header-cell *matHeaderCellDef> Arrived </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Count}} </td>
+                    </ng-container>
+                      
+                    <!-- Not Scanned Total Column -->
+                    <ng-container matColumnDef="Not Scanned Total">
+                        <th mat-header-cell *matHeaderCellDef> Not Scanned Total </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Not_Scanned_Total}} </td>
+                    </ng-container>
+                      
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="lead-font">
+                        Category Breakdown
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <table mat-table [dataSource]="this.activityBreakdown" class="mat-elevation-z8 text-center lead-font">
+                    <!-- Activity Column -->
+                    <ng-container matColumnDef="Activity">
+                        <th mat-header-cell *matHeaderCellDef> Activity </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Activity_Name}} </td>
+                    </ng-container>
+                    <!-- Arrived Column -->
+                    <ng-container matColumnDef="Arrived">
+                        <th mat-header-cell *matHeaderCellDef> Arrived </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Count}} </td>
+                    </ng-container>
+                    <!-- Not Scanned Total Column -->
+                    <ng-container matColumnDef="Not Scanned Total">
+                        <th mat-header-cell *matHeaderCellDef> Not Scanned Total </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Not_Scanned_Total}} </td>
+                    </ng-container>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="lead-font">
+                        Activity/Category Breakdown
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <table mat-table [dataSource]="this.activityBreakdown" class="mat-elevation-z8 text-center lead-font">
+                    <!-- Activity Column -->
+                    <ng-container matColumnDef="Activity">
+                        <th mat-header-cell *matHeaderCellDef> Activity </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Activity_Name}} </td>
+                    </ng-container>
+                        
+                    <!-- Arrived Column -->
+                    <ng-container matColumnDef="Arrived">
+                        <th mat-header-cell *matHeaderCellDef> Arrived </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Count}} </td>
+                    </ng-container>
+                        
+                    <!-- Not Scanned Total Column -->
+                    <ng-container matColumnDef="Not Scanned Total">
+                        <th mat-header-cell *matHeaderCellDef> Not Scanned Total </th>
+                        <td mat-cell *matCellDef="let element"> {{element.Not_Scanned_Total}} </td>
+                    </ng-container>
+                          
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                </table>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>     
+    <div class="width-100 footer">
+        <mat-toolbar>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="goToSearch()" class="text-dark">
+                <mat-icon>search</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-icon-button  disabled class="text-orange">
+                <mat-icon>insert_chart_outlined</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)="goToScan()" class="text-dark">
+                <mat-icon>center_focus_weak</mat-icon>
+            </button>
+            <span class="spacer"></span>
+            <button mat-icon-button (click)=" goToSettings()" class="text-dark">
+                <mat-icon>settings</mat-icon>
+            </button>
+            <span class="spacer"></span>
+        </mat-toolbar>
+    </div>
+</div>
