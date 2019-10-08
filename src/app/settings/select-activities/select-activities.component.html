@@ -5,7 +5,7 @@
                 <mat-icon>navigate_before</mat-icon>
             </button>
             <span class="spacer"></span>
-            <span class="toolbar-text">Device Settings</span>
+            <span>Device Settings</span>
             <span class="spacer"></span>
             <button class="mr--15" mat-icon-button (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>
@@ -14,7 +14,7 @@
         <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
     </div>
     <div *ngIf="activities" class="width-100 content text-center my-20" fxLayout="column" fxLayoutAlign="space-evenly center">
-        <h3 class="lead-font text-dark text-center">Step 5:  Select ACTIVITIES to validate</h3>
+        <h3 class="shocklogic-font text-dark text-center">Step 5:  Select ACTIVITIES to validate</h3>
         <span class="subtitle text-center">Select the activities you would like this device to validate for either Access Tracking or Access Control</span>
         <form [formGroup]="selectForm" (ngSubmit)="handleSelect()" fxLayout="column" fxLayoutAlign="space-evenly center">
             <div class="my-20" fxLayout="column" fxLayoutAlign="center center">

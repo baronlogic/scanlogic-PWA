@@ -5,18 +5,18 @@
                 <mat-icon class="rotate-180">exit_to_app</mat-icon>
             </button>
             <span class="spacer"></span>
-            <span class="toolbar-text">Hello <strong class="bold">{{this.user.id}}</strong></span>
+            <span>Hello <strong class="bold">{{this.user.id}}</strong></span>
             <span class="spacer"></span>
-            <span class="toolbar-text"><strong class="bold">{{this.user.clientId}}</strong></span>
+            <span><strong class="bold">{{this.user.clientId}}</strong></span>
         </mat-toolbar>
         <mat-progress-bar *ngIf="!this.projects" mode="indeterminate"></mat-progress-bar>
     </div>
     <div class="content" *ngIf="this.projects">
-        <h3 class="lead-font text-dark text-center slide-in-fwd-center">Select Project</h3>
+        <h3 class="shocklogic-font text-dark text-center slide-in-fwd-center">Select Project</h3>
         <mat-card (click)="selectProject(project.Project)" class="my-20" *ngFor="let project of projects">
-            <p class="lead-font list-font"><strong class="bold"><span>[{{project.Project}}]</span> - {{project.Name}}</strong></p>
-            <p class="lead-font list-font">{{project.Start_Date}} - {{project.End_Date}}</p>
-            <p class="lead-font list-font">Delegates: <span *ngIf="project.Attendees != 0; else withoutAttendees">{{project.Attendees}}</span></p>
+            <p class="shocklogic-font list-font"><strong class="bold"><span>[{{project.Project}}]</span> - {{project.Name}}</strong></p>
+            <p class="shocklogic-font list-font">{{project.Start_Date}} - {{project.End_Date}}</p>
+            <p class="shocklogic-font list-font">Delegates: <span *ngIf="project.Attendees != 0; else withoutAttendees">{{project.Attendees}}</span></p>
             <ng-template #withoutAttendees>
                 0
             </ng-template>
