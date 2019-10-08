@@ -1,189 +1,127 @@
 /* You can add global styles to this file, and also import other style files */
-$leadlogic-font: 'Montserrat', sans-serif;
-$leadlogic-orange: #FD814C;
-$leadlogic-dark: #222327;
+
+$shocklogic-font: 'Montserrat', sans-serif;
+$shocklogic-orange: #FD814C;
+$shocklogic-dark: #222327;
+$shocklogic-light: whitesmoke;
 
 body {
-  height: 100%;
-  box-sizing: border-box;
-  background-color: whitesmoke;
-  color: $leadlogic-orange;
-  margin: 0px;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: $shocklogic-light;
+    color: $shocklogic-orange;
+    font-family: $shocklogic-font;
+    margin: 0px;
 }
-
-html {
-  height: 100%;
-  box-sizing: border-box;
-  margin: 0;
-}
-
-.header{
-  flex: 0 0 auto;
-}
-
-.content{
-  flex: 1 1 auto;     
-  overflow-y: auto;     
-}
-.footer{
-  flex: 0 0 auto;
-}
-
-mat-toolbar{
-  background-color: white !important;
-  color: $leadlogic-orange !important;
-  font-family: $leadlogic-font !important;
-}
-
-.header mat-toolbar{
-  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2);
-  margin-bottom: 2px !important;
-}
-
-.footer mat-toolbar{
-  box-shadow: 0px -2px 1px -1px rgba(0, 0, 0, 0.2);
-  margin-top: 2px !important;
-}
-
-.footer .material-icons{
-  font-size: 30px
-}
-
-.toolbar-text{
-  font-size: 14px;
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.rotate-180{
-  transform: rotate(180deg);
-}
-
-app-navbar{
-  width: 100%;
-}
-
-.width-100{
-  width: 100%;
-}
-
-.mt-10{
-  margin-top: 10px;
-}
-
-.mt-50{
-  margin-top: 50px;
-}
-
-.mx-20{
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.ml--15{
-  margin-left: -15px;
-}
-
-.text-center{
-  text-align: center;
-}
-
-.text-orange{
-  color: $leadlogic-orange !important;
-}
-
-.text-dark{
-  color: $leadlogic-dark;
-}
-
-.bold{
-  font-weight: 900;
-}
-
-.lead-font{
-  font-family: $leadlogic-font;
-}
-
-.leadlogic-title{
-  color: $leadlogic-orange;
-  font-family: $leadlogic-font;
-  font-size: 24px;
-  margin-bottom: 15px;
-  margin-top: 15px;
-}
-
-.mat-snack-bar-container{
-  background-color: $leadlogic-dark;
-  color: $leadlogic-orange;
   
-}
+html { height: 100%; box-sizing: border-box; margin: 0; }
 
-.mat-simple-snackbar, .mat-button-wrapper{
-  font-family: $leadlogic-font;
-  font-size: smaller;
-}
+.shocklogic-font{ font-family: $shocklogic-font; }
 
-.leadlogic-btn{
-  width: 204px;
-  height: 45PX;
-  background-color: $leadlogic-orange;
-  text-align: -webkit-center;
-  font-size: 16px;
-  font-family: $leadlogic-font;
-  font-weight: 900;
-}
+.text-dark{ color: $shocklogic-dark; }
 
-.btn-text{
-  font-size: 14px;
-  font-family: $leadlogic-font;
-  font-weight: 800;
-}
+.header{ flex: 0 0 auto; }
+.content{ flex: 1 1 auto; overflow-y: auto; }
+.footer{ flex: 0 0 auto; }
 
 mat-form-field.mat-form-field {
-  font-size: 14px;
-  font-family: $leadlogic-font;
-  width: 250px;
-  color: rgb(77, 77, 77);
+    font-size: 14px;
+    font-family: $shocklogic-font;
+    width: 250px;
+    color: $shocklogic-dark;
 }
 
+.mat-select-value-text, .mat-option-text { font-family: "Montserrat", sans-serif; }
+
 .subtitle{
-  color: rgb(77, 77, 77);
-  font-family: $leadlogic-font;
-  font-size: 14px;
-  margin-left: 20px;
-  margin-right: 20px;
-  padding-left: 20px;
-  padding-right: 20px;
+    color: rgb(77, 77, 77);
+    font-family: $shocklogic-font;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+.second-btn{
+    margin-top: 20px !important;
+    margin-left: 20px !important;
+     margin-right: 20px !important;
+    width: 100px;
+    height: 45PX;
+    background-color: white;
+    text-align: -webkit-center !important;
 }
+
+.submit-btn{
+    margin-top: 20px !important;
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+    width: 100px;
+    height: 45PX;
+    background-color: $shocklogic-orange;
+    text-align: -webkit-center !important;
+}
+
+.mat-snack-bar-container{ background-color: $shocklogic-dark; color: $shocklogic-orange; }
+
+.mat-simple-snackbar, .mat-button-wrapper{ font-family: $shocklogic-font; font-size: smaller; }
+
+mat-toolbar{ background-color: white !important; color: $shocklogic-orange !important; font-family: $shocklogic-font !important; }
+
+.header mat-toolbar{ box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2); margin-bottom: 2px !important; }
+
+.width-100{ width: 100%; }
+
+.spacer{ flex: 1 1 auto; }
+
+.rotate-180{ transform: rotate(180deg); }
+
+.footer mat-toolbar{ box-shadow: 0px -2px 1px -1px rgba(0, 0, 0, 0.2); margin-top: 2px !important; }
+
+.text-center{ text-align: center; }
+
+ngx-bottom-nav-button:not(.active) { --ngx-bottom-nav-button-color: #222327; }
+
+.ml--15{ margin-left: -15px !important; }
+
+.mr--15{ margin-right: -15px !important; }
+
+.mb-20{ margin-bottom: 20px; }
+
+.bold{ font-weight: 900; }
+
+:host ::ng-deep td.mat-cell { padding-left: 0px; }
 
 .slide-in-fwd-center {
 	-webkit-animation: slide-in-fwd-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
     animation: slide-in-fwd-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
 }
 
- @-webkit-keyframes slide-in-fwd-center {
+@-webkit-keyframes slide-in-fwd-center {
     0% {
-      -webkit-transform: translateZ(-1400px);
-              transform: translateZ(-1400px);
-      opacity: 0;
+        -webkit-transform: translateZ(-1400px);
+        transform: translateZ(-1400px);
+        opacity: 0;
     }
+
     100% {
-      -webkit-transform: translateZ(0);
-              transform: translateZ(0);
-      opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
     }
-  }
-  @keyframes slide-in-fwd-center {
+}
+
+@keyframes slide-in-fwd-center {
     0% {
-      -webkit-transform: translateZ(-1400px);
-              transform: translateZ(-1400px);
-      opacity: 0;
+        -webkit-transform: translateZ(-1400px);
+        transform: translateZ(-1400px);
+        opacity: 0;
     }
+
     100% {
-      -webkit-transform: translateZ(0);
-              transform: translateZ(0);
-      opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0);
+        opacity: 1;
     }
   }

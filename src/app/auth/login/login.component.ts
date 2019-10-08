@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { AuthService } from '../auth.service';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-login',
