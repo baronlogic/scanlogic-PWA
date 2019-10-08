@@ -1,9 +1,9 @@
-$leadlogic-font: 'Montserrat', sans-serif;
-$leadlogic-orange: #FD814C;
+$shocklogic-font: 'Montserrat', sans-serif;
+$shocklogic-orange: #FD814C;
 
 mat-form-field.mat-form-field {
     font-size: 12px;
-    font-family: $leadlogic-font;
+    font-family: $shocklogic-font;
     width: 90%;
 }
 
@@ -47,7 +47,7 @@ mat-form-field.mat-form-field {
 
 .btn-text{
     font-size: 13px;
-    font-family: $leadlogic-font;
+    font-family: $shocklogic-font;
     font-weight: 600;
 }
 
@@ -62,7 +62,7 @@ mat-form-field.mat-form-field {
 }
 
 .bg-orange{
-    background-color: $leadlogic-orange;
+    background-color: $shocklogic-orange;
 }
 
 .bg-green{

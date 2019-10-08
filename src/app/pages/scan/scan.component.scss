@@ -1,5 +1,5 @@
-$leadlogic-font: 'Montserrat', sans-serif;
-$leadlogic-orange: #FD814C;
+$shocklogic-font: 'Montserrat', sans-serif;
+$shocklogic-orange: #FD814C;
 
 .w-90{
     width: 90%;
@@ -11,12 +11,12 @@ $leadlogic-orange: #FD814C;
 
 mat-form-field.mat-form-field {
     font-size: 12px;
-    font-family: $leadlogic-font;
+    font-family: $shocklogic-font;
     width: 90%;
 }
 
 .sl-btn{
-    background-color: $leadlogic-orange;
+    background-color: $shocklogic-orange;
     position: fixed;
     top: 0;
     left: 0;

@@ -1,10 +1,5 @@
 <div fxFill fxLayout="column" fxLayoutAlign="space-between center">
     <div class="width-100 header">
-        <mat-toolbar>
-            <span class="spacer"></span>
-            <span class="sign-in-title text-center"><strong class="bold">Scan</strong>logic</span>
-            <span class="spacer"></span>
-        </mat-toolbar>
         <mat-progress-bar *ngIf="!(statistics && participants) || bLoading" mode="indeterminate"></mat-progress-bar>
     </div>
     <div *ngIf="statistics && participants" class="width-100 content text-center slide-in-fwd-center" fxLayout="column" fxLayoutAlign=" center">
@@ -15,19 +10,19 @@
             </mat-form-field>
         </form>
         <div *ngIf="statistics" class="width-100" fxLayout="row" fxLayoutAlign="space-between center">
-            <mat-card class="lead-font mini-card bg-orange">
+            <mat-card class="shocklogic-font mini-card bg-orange">
                 <mat-card-content class="text-center">
                     <mat-card-title class="text-center list-font fw-600">TOTAL</mat-card-title>
                     <mat-card-subtitle class="fw-600">{{ statistics.Total_Participants_Overall }}</mat-card-subtitle>
                 </mat-card-content>
             </mat-card>
-            <mat-card class="lead-font mini-card bg-green">
+            <mat-card class="shocklogic-font mini-card bg-green">
                 <mat-card-content class="text-center">
                     <mat-card-title class="text-center list-font fw-600">LIVE</mat-card-title>
                     <mat-card-subtitle class="fw-600">{{ statistics.Total_Participants }}</mat-card-subtitle>
                 </mat-card-content>
             </mat-card>
-            <mat-card class="lead-font mini-card bg-red">
+            <mat-card class="shocklogic-font mini-card bg-red">
                 <mat-card-content class="text-center">
                     <mat-card-title class="text-center list-font fw-600">NON-LIVE</mat-card-title>
                     <mat-card-subtitle class="fw-600">{{ statistics.Total_None_Live_Participants }}</mat-card-subtitle>
@@ -35,7 +30,7 @@
             </mat-card>
         </div>
         <div fxFill>
-            <mat-card class="my-10 lead-font" *ngFor="let participant of participants">
+            <mat-card class="my-10 shocklogic-font" *ngFor="let participant of participants">
                 <mat-card-header class="text-left">
                     <mat-card-title>{{ participant.First_Name }} {{ participant.Family_Name }}</mat-card-title>
                     <mat-card-subtitle>ID: {{ participant.Serial_Number }}/{{ participant.Person_Id }}/N/A</mat-card-subtitle>
@@ -52,25 +47,4 @@
             </mat-card>
         </div>
     </div>     
-    <div class="width-100 footer">
-        <mat-toolbar>
-            <span class="spacer"></span>
-            <button mat-icon-button disabled class="text-orange">
-                <mat-icon>search</mat-icon>
-            </button>
-            <span class="spacer"></span>
-            <button mat-icon-button  (click)="goToStatistics()" class="text-dark">
-                <mat-icon>insert_chart_outlined</mat-icon>
-            </button>
-            <span class="spacer"></span>
-            <button mat-icon-button (click)="goToScan()" class="text-dark">
-                <mat-icon>center_focus_weak</mat-icon>
-            </button>
-            <span class="spacer"></span>
-            <button mat-icon-button (click)=" goToSettings()" class="text-dark">
-                <mat-icon>settings</mat-icon>
-            </button>
-            <span class="spacer"></span>
-        </mat-toolbar>
-    </div>
 </div>

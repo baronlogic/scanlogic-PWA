@@ -5,7 +5,7 @@
                 <mat-icon>navigate_before</mat-icon>
             </button>
             <span class="spacer"></span>
-            <span class="toolbar-text">Device Settings</span>
+            <span>Device Settings</span>
             <span class="spacer"></span>
             <button class="mr--15" mat-icon-button (click)="logout()">
                 <mat-icon>exit_to_app</mat-icon>
@@ -14,7 +14,7 @@
         <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
     </div>
     <div class="width-100 content text-center" fxLayout="column" fxLayoutAlign="space-evenly center">
-        <h3 class="lead-font text-dark text-center">Step 3: Repeat Scans</h3>
+        <h3 class="shocklogic-font text-dark text-center">Step 3: Repeat Scans</h3>
         <span class="subtitle text-center"><strong class="bold">Repeat Scans</strong> will either enable or disable checking the number of scans allowed for each delegate based off the number of bookings made for each activity</span>
         <form [formGroup]="repeatForm" (ngSubmit)="handleRepeat()" fxLayout="column" fxLayoutAlign="space-evenly center">
             <mat-form-field appearance="outline">
