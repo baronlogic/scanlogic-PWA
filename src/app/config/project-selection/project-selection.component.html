@@ -1,0 +1,55 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="width-100 header">
+        <mat-toolbar>
+            <button class="ml--15" mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button (click)="logout()" mat-menu-item class="shocklogic-font"><mat-icon class="rotate-180">exit_to_app</mat-icon> Sign Out</button>
+            </mat-menu>
+            <span class="spacer"></span>
+            <span class="shocklogic-orange text-center"><strong class="bold">Scan</strong>logic</span>
+            <span class="spacer"></span>
+            <span class="btn-none"></span>
+        </mat-toolbar>
+        <mat-progress-bar *ngIf="bProjects" mode="indeterminate"></mat-progress-bar>
+    </div>
+    <div *ngIf="bError" class="text-center">
+        <h3>Something went wrong</h3>
+        <h4>There was a problem loading the projects...</h4>
+        <button (click)="loadProjects()" class="try-again-btn" mat-raised-button>
+            <span>TRY AGAIN</span>
+        </button>
+    </div>
+    <mat-card *ngIf="projectsFiltered" class="width-75 mt-20 mb-20">
+        <mat-card-header>
+            <mat-card-title class="text-left fs-14">Client Account: {{user.clientId}}</mat-card-title>
+            <mat-card-title class="text-left fs-14">User: {{user.firstName}} {{user.familyName}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content *ngIf="projectsFiltered.length > 0" class="width-100" fxLayout="column" fxLayoutAlign="center center">
+            <div class="width-100" style="overflow-x:auto;">
+                <table>
+                    <tr>
+                        <th class="shocklogic-font text-dark text-center slide-in-fwd-center">Select Project</th>
+                    </tr>
+                    <tr *ngFor="let project of projectsFiltered" (click)="selectProject(project.Project)">
+                        <td>
+                            [{{ project.Project }}] - {{ project.Name }}
+                            <br>
+                            {{ project.Start_Date }} - {{ project.End_Date }}
+                            <br>
+                            {{ project.Venue }}
+                            <br *ngIf="project.Venue != ''">
+                            <strong>Delegates: </strong><span *ngIf="project.Attendees == 0">0</span><span *ngIf="project.Attendees != 0">{{ project.Attendees }}</span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </mat-card-content>
+        <mat-card-content *ngIf="projectsFiltered.length == 0" class="width-100" fxLayout="column" fxLayoutAlign="center center">
+            <h3 class="shocklogic-font text-dark text-center slide-in-fwd-center">There are no existing projects for this client...</h3>
+        </mat-card-content>
+    </mat-card>
+    <div class="width-100 footer">  
+    </div>
+  <div>

@@ -1,28 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
-$shocklogic-font: 'Montserrat', sans-serif;
+$shocklogic-font: 'Nunito Sans', sans-serif;
 $shocklogic-orange: #FD814C;
 $shocklogic-dark: #222327;
 $shocklogic-light: whitesmoke;
 
-body {
-    height: 100%;
-    box-sizing: border-box;
-    background-color: $shocklogic-light;
-    color: $shocklogic-orange;
-    font-family: $shocklogic-font;
-    margin: 0px;
-}
-  
-html { height: 100%; box-sizing: border-box; margin: 0; }
+html, body { height: 100%; color: $shocklogic-dark; font-family: $shocklogic-font; }
 
-.shocklogic-font{ font-family: $shocklogic-font; }
-
-.text-dark{ color: $shocklogic-dark; }
+body { margin: 0; background-color: $shocklogic-light; color: $shocklogic-dark; }
 
 .header{ flex: 0 0 auto; }
 .content{ flex: 1 1 auto; overflow-y: auto; }
 .footer{ flex: 0 0 auto; }
+
+.shocklogic-font{ font-family: $shocklogic-font !important; }
+.shocklogic-orange{ color: $shocklogic-orange; }
+.shocklogic-dark{ color: $shocklogic-dark; }
+
+.spacer { flex: 1 1 auto; }
+.btn-none { width: 40px; height: 40px; }
+.rotate-180{ transform: rotate(180deg); }
+
+.ml--15{ margin-left: -15px !important; }
+.mr--15{ margin-right: -15px !important; }
+.mt-20{ margin-top: 20px !important; }
 
 mat-form-field.mat-form-field {
     font-size: 14px;
@@ -31,67 +32,17 @@ mat-form-field.mat-form-field {
     color: $shocklogic-dark;
 }
 
-.mat-select-value-text, .mat-option-text { font-family: "Montserrat", sans-serif; }
-
-.subtitle{
-    color: rgb(77, 77, 77);
-    font-family: $shocklogic-font;
-    font-size: 14px;
-    margin-left: 20px;
-    margin-right: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
-
-.second-btn{
-    margin-top: 20px !important;
-    margin-left: 20px !important;
-     margin-right: 20px !important;
-    width: 100px;
-    height: 45PX;
-    background-color: white;
-    text-align: -webkit-center !important;
-}
-
-.submit-btn{
-    margin-top: 20px !important;
-    margin-left: 20px !important;
-    margin-right: 20px !important;
-    width: 100px;
-    height: 45PX;
-    background-color: $shocklogic-orange;
-    text-align: -webkit-center !important;
-}
-
-.mat-snack-bar-container{ background-color: $shocklogic-dark; color: $shocklogic-orange; }
-
-.mat-simple-snackbar, .mat-button-wrapper{ font-family: $shocklogic-font; font-size: smaller; }
-
-mat-toolbar{ background-color: white !important; color: $shocklogic-orange !important; font-family: $shocklogic-font !important; }
+mat-toolbar{ background-color: white !important; font-family: $shocklogic-font !important; }
 
 .header mat-toolbar{ box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2); margin-bottom: 2px !important; }
 
+.mat-snack-bar-container{ background-color: white; color: $shocklogic-dark; }
+
+.mat-simple-snackbar, .mat-button-wrapper{ font-family: $shocklogic-font; font-size: smaller; }
+
 .width-100{ width: 100%; }
-
-.spacer{ flex: 1 1 auto; }
-
-.rotate-180{ transform: rotate(180deg); }
-
-.footer mat-toolbar{ box-shadow: 0px -2px 1px -1px rgba(0, 0, 0, 0.2); margin-top: 2px !important; }
-
-.text-center{ text-align: center; }
-
-ngx-bottom-nav-button:not(.active) { --ngx-bottom-nav-button-color: #222327; }
-
-.ml--15{ margin-left: -15px !important; }
-
-.mr--15{ margin-right: -15px !important; }
-
-.mb-20{ margin-bottom: 20px; }
-
-.bold{ font-weight: 900; }
-
-:host ::ng-deep td.mat-cell { padding-left: 0px; }
+.height-100{ height: 100%; }
+.text-center{ text-align: center !important; }
 
 .slide-in-fwd-center {
 	-webkit-animation: slide-in-fwd-center 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;

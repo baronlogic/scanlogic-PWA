@@ -1,16 +1,71 @@
-<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
-    <div class="width-100 header">
-        <mat-toolbar>
-            <span class="spacer"></span>
-            <span class="text-center"><strong class="bold">Scan</strong>logic</span>
-            <span class="spacer"></span>
-        </mat-toolbar>
-        <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+<mat-drawer-container class="shocklogic-font" fxFill autosize>
+    <mat-drawer fxLayout="column" #drawer class="sidenav text-center" mode="over">
+        <div class="header">
+            <img width="50" src="https://trello-attachments.s3.amazonaws.com/52a5f9b71cfc79160f005fc5/592ff71e29751b4155369846/9d44f6b6f91fcbcdc2dce44d711d3f3e/Icon_Scanning.png" alt="">
+            <br>
+            <span class="shocklogic-orange text-center sidenav-title"><strong class="bold">Scan</strong>logic</span>
+        </div>
+        <div class="content">
+            <br>
+            <hr>
+            <br>
+            <div fxLayout="column">
+                <button class="sidenav-btn" mat-button><mat-icon class="icon-30">home</mat-icon> SEARCH</button>
+                <button class="sidenav-btn" mat-button><mat-icon class="icon-30">insert_chart_outlined</mat-icon> STATISTICS</button>
+                <button class="sidenav-btn" mat-button><mat-icon class="icon-30">center_focus_weak</mat-icon> SCAN</button>
+                <button class="sidenav-btn" mat-button><mat-icon class="icon-30">settings</mat-icon> SETTINGS</button>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div fxLayout="column">
+                <button class="sidenav-btn" mat-button (click)="changeProject()"><mat-icon class="icon-30">cached</mat-icon> CHANGE PROJECT</button>
+                <button class="sidenav-btn" mat-button (click)="changeSetup()"><mat-icon class="icon-30">settings_remote</mat-icon> CHANGE SETUP</button>
+                <button class="sidenav-btn" mat-button (click)="logout()"><mat-icon class="icon-30">exit_to_app</mat-icon> SIGN OUT</button>
+            </div>
+        </div>
+        <div fxLayout="column" class="footer">
+            <!--<span>
+                Developed by Rafael Baron
+            </span>-->
+            <span>
+                Made with <span class="heart">❤</span> by Shocklogic
+            </span>
+        </div>
+    </mat-drawer>
+    <div fxFill fxLayout="column" fxLayoutAlign="space-between center">
+        <div class="width-100 header">
+            <mat-toolbar>
+                <button class="ml--15" mat-icon-button (click)="drawer.toggle()"><mat-icon>menu</mat-icon></button>
+                <span class="spacer"></span>
+                <span class="shocklogic-orange text-center"><strong class="bold">Scan</strong>logic</span>
+                <span class="spacer"></span>
+                <button class="mr--15" mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>account_box</mat-icon></button>
+                <mat-menu class="card" #menu="matMenu">
+                    <mat-card class="example-card">
+                        <mat-card-header class="text-center">
+                            <mat-card-title>{{user.firstName}} {{user.familyName}}</mat-card-title>
+                            <mat-card-subtitle>User Id: {{user.id}}</mat-card-subtitle>
+                            <mat-card-subtitle>Client Id: {{user.clientId}}</mat-card-subtitle>
+                            <mat-card-subtitle>Project Id: {{user.projectId}}</mat-card-subtitle>
+                        </mat-card-header>
+                        <hr>
+                        <br>
+                        <mat-card-content class="text-center">
+                            <mat-card-title>Device Info</mat-card-title>
+                            <br>
+                            <mat-card-subtitle>Device Name: {{userSettings.deviceName}}</mat-card-subtitle>
+                            <mat-card-subtitle *ngIf="userSettings.scannerMode == 'access_control_mode'">Scanner Mode: Access Control Mode</mat-card-subtitle>
+                            <mat-card-subtitle *ngIf="userSettings.scannerMode == 'access_tracking_mode'">Scanner Mode: Access Tracking Mode</mat-card-subtitle>
+                        </mat-card-content>
+                        <mat-card-actions>
+                        </mat-card-actions>
+                    </mat-card>
+                </mat-menu>
+            </mat-toolbar>
+        </div>
+        <div class="content" fxLayout="column" fxLayoutAlign="center center">
+            CONTENT
+        </div>
     </div>
-    <div class="content width-100 text-center slide-in-fwd-center">
-        <router-outlet></router-outlet>
-    </div>
-    <div class="footer width-100">
-        <ngx-bottom-nav [items]="items"></ngx-bottom-nav>
-    </div>
-<div>
+</mat-drawer-container>

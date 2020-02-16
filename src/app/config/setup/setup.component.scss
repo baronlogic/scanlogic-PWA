@@ -1,0 +1,23 @@
+$shocklogic-orange: #FD814C;
+$shocklogic-light: whitesmoke;
+$shocklogic-font: 'Nunito Sans', sans-serif;
+
+.btn-text{
+    font-size: 12px;
+    font-family: $shocklogic-font;
+    font-weight: 400;
+}
+
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 0;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-headers-align .mat-form-field + .mat-form-field {
+  margin-left: 8px;
+}

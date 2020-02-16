@@ -1,0 +1,209 @@
+<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
+    <div class="width-100 header">
+        <mat-toolbar>
+            <button class="ml--15" mat-icon-button [matMenuTriggerFor]="menu">
+                    <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button (click)="logout()" mat-menu-item class="shocklogic-font"><mat-icon class="rotate-180">exit_to_app</mat-icon> Sign Out</button>
+                <button (click)="changeProject()" mat-menu-item class="shocklogic-font"><mat-icon>cached</mat-icon> Change Project</button>
+            </mat-menu>
+            <span class="spacer"></span>
+            <span class="shocklogic-orange text-center"><strong class="bold">Scan</strong>logic</span>
+            <span class="spacer"></span>
+            <span class="btn-none"></span>
+        </mat-toolbar>
+        <mat-progress-bar *ngIf="false" mode="indeterminate"></mat-progress-bar>
+    </div>
+
+    <div class="content slide-in-fwd-center">
+
+        <mat-accordion class="example-headers-align">
+        
+            <mat-expansion-panel class="text-center" [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Device Name
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Please enter an unique name...
+                        <mat-icon>looks_one</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <span>Please enter an unique device name, corresponding to a location being scanned, or simply to identify who is using it</span>
+                <form class="mt-20" [formGroup]="deviceForm" (ngSubmit)="handleDevice()" fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Device Name</mat-label>
+                        <input matInput formControlName="Device_Name" class="form-control">
+                    </mat-form-field>
+                    <div fxFill fxLayout="row" fxLayoutAlign="space-evenly center">
+                        <button (click)="resetDeviceName()" type="button" class="second-btn" mat-raised-button [disabled]="!deviceForm.valid">
+                            <span *ngIf="true" class="btn-text">RESET</span>
+                            <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                        </button>
+                    </div>
+                </form>
+                <mat-action-row>
+                    <button mat-button color="primary" (click)="handleDevice()" [disabled]="!deviceForm.valid">
+                        <span *ngIf="true" class="btn-text">CONTINUE</span>
+                        <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                    </button>
+                </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel class="text-center" [disabled]="step < 1" [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Scanner Mode
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Access or tracking control...
+                    <mat-icon>looks_two</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <span><strong class="bold">Access Control</strong> mode will check that each delegate has the assigned activities</span>
+                <br>
+                <span><strong class="bold">Access Tracking</strong> mode will track activities assigned to the device, and log all scans</span>
+                <form class="mt-20" [formGroup]="modeForm" (ngSubmit)="handleMode()" fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Scanner Mode</mat-label>
+                        <mat-select formControlName="Scanner_Mode">
+                            <mat-option *ngFor="let mode of scannerModes" [value]="mode.value">
+                                {{mode.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div fxFill fxLayout="row" fxLayoutAlign="center center">
+                        <button (click)="resetScannerMode()" type="button" class="second-btn" mat-raised-button [disabled]="!modeForm.valid">
+                            <span *ngIf="true" class="btn-text">RESET</span>
+                            <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                        </button>
+                    </div>
+                </form>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">GO BACK</button>
+                    <button mat-button color="primary" [disabled]="!modeForm.valid" (click)="handleMode()">
+                        <span *ngIf="true" class="btn-text">CONTINUE</span>
+                        <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                    </button>
+                </mat-action-row>
+            </mat-expansion-panel>
+          
+            <mat-expansion-panel *ngIf="userSettings.scannerMode != 'access_tracking_mode'" class="text-center" [disabled]="step < 2" [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Repeat Scans
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        will either enable or disable...
+                        <mat-icon>looks_3</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <span><strong class="bold">Repeat Scans</strong> will either enable or disable checking the number of scans allowed for each delegate based off the number of bookings made for each activity</span>
+                <form class="mt-20" [formGroup]="repeatForm" (ngSubmit)="handleRepeat()" fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Repeat Scans</mat-label>
+                        <mat-select formControlName="Scanner_Repeat">
+                            <mat-option *ngFor="let mode of RepeatModes" [value]="mode.value">
+                                {{mode.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div fxFill fxLayout="row" fxLayoutAlign="center center">
+                        <button (click)="resetRepeatScans()" type="button" class="second-btn" mat-raised-button [disabled]="!repeatForm.valid">
+                            <span *ngIf="true" class="btn-text">RESET</span>
+                            <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                        </button>
+                    </div>
+                </form>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">GO BACK</button>
+                    <button mat-button color="primary" [disabled]="!repeatForm.valid" (click)="handleRepeat()">
+                        <span *ngIf="true" class="btn-text">CONTINUE</span>
+                        <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                    </button>
+                </mat-action-row>
+            </mat-expansion-panel>
+    
+            <mat-expansion-panel *ngIf="userSettings.scannerMode != 'access_tracking_mode'" class="text-center" [disabled]="step < 3" [expanded]="step === 3" (opened)="setStep(3)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Activity Settings
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        There are two types of checks...
+                        <mat-icon>looks_4</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <span>If you would like to check activites for each scanned delegate, then select the activities for this specific device from the list below</span>
+                <br>
+                <span>There are two types of checks: Check and make sure delegate has all activity, or to check if delegate has atleast one of the following</span>
+                <form class="mt-20" [formGroup]="activitySettingsForm" (ngSubmit)="handleActivitySettings()" fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Activity Settings</mat-label>
+                        <mat-select formControlName="Activity_Settings">
+                            <mat-option *ngFor="let mode of activitySettingsModes" [value]="mode.value">
+                                {{mode.viewValue}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div fxFill fxLayout="row" fxLayoutAlign="center center">
+                        <button (click)="resetRepeatScans()" type="button" class="second-btn" mat-raised-button [disabled]="!activitySettingsForm.valid">
+                            <span *ngIf="true" class="btn-text">RESET</span>
+                            <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                        </button>
+                    </div>
+                </form>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">GO BACK</button>
+                    <button mat-button color="primary" [disabled]="!activitySettingsForm.valid" (click)="handleActivitySettings()">
+                        <span *ngIf="true" class="btn-text">CONTINUE</span>
+                        <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                    </button>
+                </mat-action-row>
+            </mat-expansion-panel>
+    
+            <mat-expansion-panel [disabled]="step < 4" [expanded]="step === 4" (opened)="setStep(4)" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Select Activities
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        Select the activities you would like...
+                        <mat-icon>looks_5</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <span>Select the activities you would like this device to validate for either Access Tracking or Access Control</span>
+                <form class="mt-20" [formGroup]="selectActivitiesForm" (ngSubmit)="handleSelectActivities()" fxLayout="column" fxLayoutAlign="space-evenly center">
+                    <mat-form-field appearance="outline">
+                        <mat-label *ngIf="activities.length != 0">Select Activity</mat-label>
+                        <mat-label *ngIf="activities.length == 0">No activities available</mat-label>
+                        <mat-select multiple formControlName="Select_Activities">
+                            <mat-option *ngFor="let activity of activities" [value]="activity.Activity_Id">
+                                {{activity.Activity_Id}} - {{activity.Short_Name}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <div fxFill fxLayout="row" fxLayoutAlign="center center">
+                        <button (click)="resetSelect()" type="button" class="second-btn" mat-raised-button [disabled]="!selectActivitiesForm.valid">
+                            <span *ngIf="true" class="btn-text">RESET</span>
+                            <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                        </button>
+                    </div>
+                </form>
+                <mat-action-row>
+                    <button mat-button color="warn" (click)="prevStep()">GO BACK</button>
+                    <button mat-button color="primary" [disabled]="!selectActivitiesForm.valid" (click)="handleSelectActivities()">
+                        <span *ngIf="true" class="btn-text">END</span>
+                        <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
+                    </button>
+                </mat-action-row>
+            </mat-expansion-panel>
+          
+        </mat-accordion>
+        
+    </div>
+      
+    <div class="width-100 footer">  
+    </div>
+  <div>

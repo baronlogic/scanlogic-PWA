@@ -1,4 +1,4 @@
-$shocklogic-font: 'Montserrat', sans-serif;
+$shocklogic-font: 'Nunito Sans', sans-serif;
 $shocklogic-orange: #FD814C;
 
 .sign-in-title{
@@ -29,7 +29,7 @@ $shocklogic-orange: #FD814C;
 .btn-login-text{
     font-size: 16px;
     font-family: $shocklogic-font;
-    font-weight: 900;
+    font-weight: 700;
 }
 
 :host ::ng-deep .mat-form-field-wrapper{
