@@ -1,0 +1,13 @@
+.participants-card{
+    width: 225px;
+    margin-bottom: 10px !important;
+    margin: 10px;
+}
+
+:host ::ng-deep .mat-card-header-text {
+    margin: 0 0px;
+}
+
+.participants-card-title{
+    font-size: 12px;
+}

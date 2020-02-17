@@ -1,0 +1,22 @@
+<div class="heartbeat" *ngIf="!participants" fxFill fxLayout="column" fxLayoutAlign="center center">
+    <img width="75" src="https://trello-attachments.s3.amazonaws.com/52a5f9b71cfc79160f005fc5/592ff71e29751b4155369846/9d44f6b6f91fcbcdc2dce44d711d3f3e/Icon_Scanning.png" alt="">
+    <h2 class="shocklogic-orange text-center"><strong class="bold">Load</strong>ing</h2>
+</div>
+<div
+    class="content slide-in-fwd-center" 
+    *ngIf="participants" 
+    fxLayout="row wrap" 
+    fxLayout.lt-sm="column" 
+    fxLayoutGap="32px" 
+    fxLayoutAlign="center center"
+>
+    <ng-container *ngFor="let participant of participants">
+        <mat-card class="participants-card">
+            <mat-card-header>
+                <mat-card-title class="participants-card-title">
+                    {{participant.First_Name}} {{participant.Family_Name}}
+                </mat-card-title>
+            </mat-card-header>
+        </mat-card>
+    </ng-container>
+</div>
