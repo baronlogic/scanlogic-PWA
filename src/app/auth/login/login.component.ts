@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
   }
 
   goToProjectSelection(){
-    this.router.navigate(['config'], { replaceUrl: true })
+    this.router.navigate(['config'], { replaceUrl: true });
   }
 
   checkingInputEmail(){

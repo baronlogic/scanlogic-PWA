@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './pages.component';
 import { SearchComponent } from './search/search.component';
+import { ParticipantDetailsComponent } from './participant-details/participant-details.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,8 @@ const routes: Routes = [
       { path: '', redirectTo: 'search', pathMatch: 'full' },
       { path: "search", component: SearchComponent },
     ]
-  }
+  },
+  { path: "participant-details/:id", component: ParticipantDetailsComponent },
 ];
 
 @NgModule({

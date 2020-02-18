@@ -37,6 +37,7 @@ export class ProjectSelectionComponent implements OnInit {
 
   logout(){
     localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate([''], { replaceUrl: true });
   }
 

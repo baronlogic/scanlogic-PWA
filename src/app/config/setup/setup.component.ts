@@ -105,6 +105,7 @@ export class SetupComponent implements OnInit {
 
   logout(){
     localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate([''], { replaceUrl: true });
   }
 

@@ -11,12 +11,25 @@
     fxLayoutAlign="center center"
 >
     <ng-container *ngFor="let participant of participants">
-        <mat-card class="participants-card">
-            <mat-card-header>
-                <mat-card-title class="participants-card-title">
-                    {{participant.First_Name}} {{participant.Family_Name}}
-                </mat-card-title>
-            </mat-card-header>
+        <mat-card class="participants-card" fxLayout="row" fxLayoutAlign="space-between center">
+            <div fxLayout="column">
+                <mat-card-header>
+                    <mat-card-title class="participants-card-title">
+                        {{participant.First_Name}} {{participant.Family_Name}}
+                    </mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    
+                </mat-card-content>
+                <div fxLayout="row">
+                    <button class="validate-btn btn-sm" mat-stroked-button>Validate</button>
+                </div>
+            </div>
+            <div>
+                <button class="mr--15" mat-icon-button (click)="goToParticipantDetails(participant.Person_Id)">
+                    <mat-icon>keyboard_arrow_right</mat-icon>
+                </button>
+            </div>
         </mat-card>
     </ng-container>
 </div>

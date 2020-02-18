@@ -24,6 +24,7 @@ export class PagesComponent implements OnInit {
     delete this.user.projectId;
     localStorage.setItem('userLogged', JSON.stringify(this.user));
     this.router.navigate(['config/project-selection'], { replaceUrl: true });
+    sessionStorage.clear();
   }
 
   changeSetup(){
@@ -34,6 +35,7 @@ export class PagesComponent implements OnInit {
 
   logout(){
     localStorage.clear();
+    sessionStorage.clear();
     this.router.navigate([''], { replaceUrl: true });
   }
 

@@ -1,5 +1,5 @@
 .participants-card{
-    width: 225px;
+    width: 250px;
     margin-bottom: 10px !important;
     margin: 10px;
 }
@@ -10,4 +10,11 @@
 
 .participants-card-title{
     font-size: 12px;
+}
+
+.validate-btn{
+    color: green;
+    border: 1px solid green;
+    font-weight: 700;
+    width: fit-content;
 }
