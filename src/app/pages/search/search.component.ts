@@ -13,6 +13,27 @@ export class SearchComponent implements OnInit {
   userSettings: any;
   participants: any;
 
+  filteredParticipants: any[] = [];
+
+  _listFilter = '';
+
+  get listFilter(): string {
+    return this._listFilter;
+  }
+
+  set listFilter(value: string) {
+    this._listFilter = value;
+    this.filteredParticipants = this.listFilter ? this.doFilter(this.listFilter) : this.participants;
+  }
+
+  doFilter(filterBy: string): any[] {
+    filterBy = filterBy.toLocaleLowerCase();
+    return this.participants.filter((participant: any) =>
+    participant.First_Name.toLocaleLowerCase().indexOf(filterBy) !== -1 ||
+    participant.Family_Name.toLocaleLowerCase().indexOf(filterBy) !== -1
+    );
+  }
+
   constructor(
     private router: Router,
     private participantsService: ParticipantsService
@@ -27,6 +48,7 @@ export class SearchComponent implements OnInit {
     }
     else if(sessionStorage.getItem('participants')){
       this.participants = JSON.parse(sessionStorage.getItem('participants'));
+      this.filteredParticipants = this.participants;
     }
   }
 
@@ -35,6 +57,7 @@ export class SearchComponent implements OnInit {
     .subscribe(
       res => {
         this.participants = res;
+        this.filteredParticipants = this.participants;
         sessionStorage.setItem('participants', JSON.stringify(this.participants));
       },
       err => {
