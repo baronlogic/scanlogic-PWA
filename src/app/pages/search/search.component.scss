@@ -28,3 +28,7 @@ mat-card-content{
     font-weight: 700;
     width: fit-content;
 }
+
+:host ::ng-deep .mat-form-field-wrapper{
+    padding-bottom: 0px;
+}

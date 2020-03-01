@@ -2,38 +2,49 @@
     <img width="75" src="https://trello-attachments.s3.amazonaws.com/52a5f9b71cfc79160f005fc5/592ff71e29751b4155369846/9d44f6b6f91fcbcdc2dce44d711d3f3e/Icon_Scanning.png" alt="">
     <h2 class="shocklogic-orange text-center"><strong class="bold">Load</strong>ing</h2>
 </div>
-<div
-    class="content slide-in-fwd-center" 
-    *ngIf="participants" 
+<div class="slide-in-fwd-center" *ngIf="participants" fxFill fxLayout="column" fxLayoutAlign="none center">
+    <div class="header width-100" fxLayout="column" fxLayoutAlign="center center">
+        <mat-toolbar>
+            <span class="spacer"></span>
+            <mat-form-field class="width-75 p-0" appearance="outline">
+                <mat-label>Search</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <span class="spacer"></span>
+        </mat-toolbar>
+    </div>
+    <div
+    class="content"
     fxLayout="row wrap" 
     fxLayout.lt-sm="column" 
     fxLayoutGap="32px" 
-    fxLayoutAlign="center center"
->
-    <ng-container *ngFor="let participant of participants">
-        <mat-card class="participants-card" fxLayout="row" fxLayoutAlign="space-between center">
-            <div fxLayout="column">
-                <mat-card-header>
-                    <mat-card-title class="participants-card-title">
-                        {{participant.First_Name}} {{participant.Family_Name}}
-                    </mat-card-title>
-                    <mat-card-subtitle class="participants-card-subtitle">ID: {{participant.Serial_Number}} / {{participant.Person_Id}} / <ng-container *ngIf="participant.External_Identifier">{{participant.External_Identifier}}</ng-container><ng-container *ngIf="!participant.External_Identifier">NA</ng-container></mat-card-subtitle>
-                    <mat-card-subtitle class="participants-card-subtitle">{{participant.Company}}</mat-card-subtitle>
-                    <mat-card-subtitle class="participants-card-subtitle"><strong>Status:</strong> {{participant.Participant_Status_Description}}</mat-card-subtitle>
-                    <mat-card-subtitle class="participants-card-subtitle"><strong>Category:</strong> {{participant.Category_Name}}</mat-card-subtitle>
-                </mat-card-header>
-                <mat-card-content>
-                    
-                </mat-card-content>
-                <div fxLayout="row">
-                    <button class="validate-btn btn-sm" mat-stroked-button>Validate</button>
+    fxLayoutAlign="center none"
+    >
+        <ng-container *ngFor="let participant of participants">
+            <mat-card class="participants-card" fxLayout="row" fxLayoutAlign="space-between center">
+                <div fxLayout="column">
+                    <mat-card-header>
+                        <mat-card-title class="participants-card-title">
+                            {{participant.First_Name}} {{participant.Family_Name}}
+                        </mat-card-title>
+                        <mat-card-subtitle class="participants-card-subtitle">ID: {{participant.Serial_Number}} / {{participant.Person_Id}} / <ng-container *ngIf="participant.External_Identifier">{{participant.External_Identifier}}</ng-container><ng-container *ngIf="!participant.External_Identifier">NA</ng-container></mat-card-subtitle>
+                        <mat-card-subtitle class="participants-card-subtitle">{{participant.Company}}</mat-card-subtitle>
+                        <mat-card-subtitle class="participants-card-subtitle"><strong>Status:</strong> {{participant.Participant_Status_Description}}</mat-card-subtitle>
+                        <mat-card-subtitle class="participants-card-subtitle"><strong>Category:</strong> {{participant.Category_Name}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <mat-card-content>
+                        
+                    </mat-card-content>
+                    <div fxLayout="row">
+                        <button class="validate-btn btn-sm" mat-stroked-button>Validate</button>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <button class="mr--15" mat-icon-button (click)="goToParticipantDetails(participant.Person_Id)">
-                    <mat-icon>keyboard_arrow_right</mat-icon>
-                </button>
-            </div>
-        </mat-card>
-    </ng-container>
+                <div>
+                    <button class="mr--15" mat-icon-button (click)="goToParticipantDetails(participant.Person_Id)">
+                        <mat-icon>keyboard_arrow_right</mat-icon>
+                    </button>
+                </div>
+            </mat-card>
+        </ng-container>
+    </div>
 </div>
