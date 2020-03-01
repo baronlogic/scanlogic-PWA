@@ -1,11 +1,59 @@
-<div>
+<div fxFill fxLayout="column" fxLayoutAlign="space-between center">
     <div class="width-100 header">
         <mat-toolbar>
             <button class="ml--15" mat-icon-button (click)="goToSearch()"><mat-icon>arrow_back</mat-icon></button>
             <span class="spacer"></span>
             <span class="shocklogic-orange text-center"><strong class="bold">Scan</strong>logic</span>
             <span class="spacer"></span>
-            <button class="mr--15" mat-icon-button><mat-icon>edit</mat-icon></button>
+            <button [disabled]="!checkIfParticipantExist()" class="mr--15" mat-icon-button><mat-icon>edit</mat-icon></button>
         </mat-toolbar>
+    </div>
+    <div 
+    *ngIf="checkIfParticipantExist()"
+    class="width-100 content slide-in-fwd-center" 
+    fxLayout="row wrap"
+    fxLayoutAlign="center"
+    >
+        <mat-card class="width-75 mt-20 mb-10 mr-20 ml-20">
+            <mat-card-content class="width-100" fxLayout="column" fxLayoutAlign="center center">
+                <div class="width-100" style="overflow-x:auto;">
+                    <table>
+                        <tr><th colspan="2" class="shocklogic-font text-dark text-center">Participant Details</th></tr>
+                        <tr><td>ID:</td><td>{{participant.Serial_Number}} / {{participant.Person_Id}} / <ng-container *ngIf="participant.External_Identifier">{{participant.External_Identifier}}</ng-container><ng-container *ngIf="!participant.External_Identifier">NA</ng-container></td></tr>
+                        <tr><td>First Name:</td><td>{{participant.First_Name}}</td></tr>
+                        <tr><td>Family Name:</td><td>{{participant.Family_Name}}</td></tr>
+                        <tr><td>Company:</td><td>{{participant.Company}}</td></tr>
+                        <tr><td>City:</td><td>{{participant.City}}</td></tr>
+                        <tr><td>Email:</td><td>{{participant.Email}}</td></tr>
+                        <tr><td>Balance:</td><td>{{participant.Total_Balance}}</td></tr>
+                        <tr><td>Paid:</td><td>{{participant.Total_Paid}}</td></tr>
+                        <tr><td>Status:</td><td>{{participant.Participant_Status_Description}}</td></tr>
+                        <tr><td>Category:</td><td>{{participant.Category_Name}}</td></tr>
+                        <tr><td>Notifications:</td><td></td></tr>
+                    </table>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <div fxLayout="column" class="mt-20">
+            <mat-card class="width-75 mb-15 mr-20 ml-20">
+                <mat-card-content class="width-75" fxLayout="column" fxLayoutAlign="center center">
+                    <th class="w-320 shocklogic-font text-dark text-center">Actions</th>
+                    <button class="action-btn manual-btn" mat-stroked-button>Manual Scan</button>
+                    <button class="action-btn force-btn" mat-stroked-button>Force Scan</button>
+                    <button class="action-btn group-btn" mat-stroked-button>Group Scan</button>
+                </mat-card-content>
+            </mat-card>
+            <mat-card class="width-75 mb-20 mr-20 ml-20">
+                <mat-card-content class="width-75" fxLayout="column" fxLayoutAlign="center center">
+                    <th class="w-320 shocklogic-font text-dark text-center">Notes</th>
+                    <mat-form-field class="mt-20" appearance="fill">
+                        <textarea matInput></textarea>
+                    </mat-form-field>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div *ngIf="bParticipantDoesNotExist" class="width-100 content slide-in-fwd-center" fxLayout="column" fxLayoutAlign="center center">
+        <h3>There is no one in this project with that id!</h3>
     </div>
 </div>

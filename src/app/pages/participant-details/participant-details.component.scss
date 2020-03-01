@@ -1,0 +1,45 @@
+$shocklogic-orange: #FD814C;
+$shocklogic-light: whitesmoke;
+$shocklogic-font: 'Nunito Sans', sans-serif;
+.fs-14 { font-size: 14px; font-family: $shocklogic-font; font-weight: 600; }
+table { border-collapse: collapse; width: 100%; font-family: $shocklogic-font; font-size: 13px; border: 1px solid #FCD2AE; }
+th, td { text-align: left; padding: 8px; font-weight: 600; border-bottom: 1px solid #FCD2AE; }
+tr:nth-child(even){background-color: #FCD2AE }
+th { border: 1px solid $shocklogic-orange; background-color: $shocklogic-orange; color: white; }
+tr:hover {background-color: #FDA256; cursor: pointer;}
+.display-contents{ display: contents; }
+.try-again-btn{ background-color: $shocklogic-orange; color: $shocklogic-light; }
+
+mat-card{
+    height: fit-content;
+}
+
+.w-320{
+    min-width: 286px;
+    width: 100%;
+    max-width: 320px;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+.action-btn{
+    width: 250px;
+    margin: 10px;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.manual-btn{
+    color: green;
+    border-color: green;
+}
+
+.force-btn{
+    color: red;
+    border-color: red;
+}
+
+.group-btn{
+    color: blue;
+    border-color: blue;
+}

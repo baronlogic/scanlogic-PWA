@@ -20,6 +20,10 @@ export class ParticipantsService extends ApiService {
     );
   }
 
+  getParticipant(clientId: string, projectId: string, personId: string){
+    return this.http.get(this.API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME+'/'+personId, this.httpOptions);
+  }
+
 
 
 }
