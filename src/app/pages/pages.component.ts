@@ -24,7 +24,7 @@ export class PagesComponent implements OnInit {
     delete this.user.projectId;
     localStorage.setItem('userLogged', JSON.stringify(this.user));
     this.router.navigate(['config/project-selection'], { replaceUrl: true });
-    sessionStorage.clear();
+    sessionStorage.removeItem('participants');
   }
 
   changeSetup(){

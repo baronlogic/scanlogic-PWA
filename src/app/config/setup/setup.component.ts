@@ -113,6 +113,7 @@ export class SetupComponent implements OnInit {
     delete this.user.projectId;
     localStorage.setItem('userLogged', JSON.stringify(this.user));
     this.router.navigate(['config/project-selection']);
+    sessionStorage.removeItem('participants');
   }
 
   getDevices(){

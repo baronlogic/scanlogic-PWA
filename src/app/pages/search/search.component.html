@@ -17,6 +17,10 @@
                     <mat-card-title class="participants-card-title">
                         {{participant.First_Name}} {{participant.Family_Name}}
                     </mat-card-title>
+                    <mat-card-subtitle class="participants-card-subtitle">ID: {{participant.Serial_Number}} / {{participant.Person_Id}} / <ng-container *ngIf="participant.External_Identifier">{{participant.External_Identifier}}</ng-container><ng-container *ngIf="!participant.External_Identifier">NA</ng-container></mat-card-subtitle>
+                    <mat-card-subtitle class="participants-card-subtitle">{{participant.Company}}</mat-card-subtitle>
+                    <mat-card-subtitle class="participants-card-subtitle"><strong>Status:</strong> {{participant.Participant_Status_Description}}</mat-card-subtitle>
+                    <mat-card-subtitle class="participants-card-subtitle"><strong>Category:</strong> {{participant.Category_Name}}</mat-card-subtitle>
                 </mat-card-header>
                 <mat-card-content>
                     
