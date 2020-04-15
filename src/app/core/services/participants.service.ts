@@ -10,7 +10,7 @@ const ENDPOINT_NAME = 'Participants';
 export class ParticipantsService extends ApiService {
 
   getParticipants(clientId: string, projectId: string){
-    return this.http.get(this.API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME, this.httpOptions).pipe(
+    return this.http.get(this.API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME+'/Limit/50', this.httpOptions).pipe(
       map(
         (resp: any) => { 
           let participants = resp.filter(value => value.Date_Registered != '');

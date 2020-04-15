@@ -178,12 +178,19 @@
                     <mat-form-field appearance="outline">
                         <mat-label *ngIf="activities.length != 0">Select Activity</mat-label>
                         <mat-label *ngIf="activities.length == 0">No activities available</mat-label>
-                        <mat-select multiple formControlName="Select_Activities">
+                        <mat-select multiple formControlName="Select_Activities" (selectionChange)="selectActivity(this.selectActivitiesForm.get('Select_Activities').value)">
                             <mat-option *ngFor="let activity of activities" [value]="activity.Activity_Id">
                                 {{activity.Activity_Id}} - {{activity.Short_Name}}
                             </mat-option>
                         </mat-select>
                     </mat-form-field>
+                    <mat-chip-list #chipList>
+                        <mat-chip *ngFor="let activity of activitiesSelected" [removable]="removable" (removed)="removeActivity(activity.Activity_Id)">
+                                 {{activity.Activity_Id}} - {{activity.Short_Name}}
+                          <!--<mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>-->
+                        </mat-chip>
+                    </mat-chip-list>
+                    <br>
                     <div fxFill fxLayout="row" fxLayoutAlign="center center">
                         <button (click)="resetSelect()" type="button" class="second-btn" mat-raised-button [disabled]="!selectActivitiesForm.valid">
                             <span *ngIf="true" class="btn-text">RESET</span>
@@ -194,7 +201,7 @@
                 <mat-action-row>
                     <button mat-button color="warn" (click)="prevStep()">GO BACK</button>
                     <button mat-button color="primary" [disabled]="!selectActivitiesForm.valid" (click)="handleSelectActivities()">
-                        <span *ngIf="true" class="btn-text">END</span>
+                        <span *ngIf="true" class="btn-text">CONTINUE</span>
                         <mat-spinner *ngIf="false" mode="indeterminate" [diameter]="30"></mat-spinner>
                     </button>
                 </mat-action-row>

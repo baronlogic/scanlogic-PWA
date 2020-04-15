@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {MatChipInputEvent} from '@angular/material/chips';
+import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { DevicesService } from 'src/app/core/services/devices.service';
 import { ActivitiesService } from 'src/app/core/services/activities.service';
 
@@ -56,7 +58,9 @@ export class SetupComponent implements OnInit {
   ];
   activitySettingsForm: FormGroup;
   //5) SELECT ACTIVITIES
+  removable = true;
   activities: any[] = [];
+  activitiesSelected: any[] = [];
   selectActivitiesForm: FormGroup;
 
   constructor(
@@ -222,6 +226,7 @@ export class SetupComponent implements OnInit {
 
   resetSelect(){
     this.selectActivitiesForm.reset();
+    this.activitiesSelected = [];
   }
 
   handleResetButton(){
@@ -243,6 +248,27 @@ export class SetupComponent implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  selectActivity(activitySelected){
+    this.activitiesSelected = [];
+    for(let i = 0; i < activitySelected.length; i++){
+      for(let j = 0; j < this.activities.length; j++){
+        if(activitySelected[i] == this.activities[j].Activity_Id){
+          this.activitiesSelected.push(this.activities[j]);
+        }
+      } 
+    }
+  }
+
+  removeActivity(activitySelected){
+    for(let i = 0; i < this.selectActivitiesForm.get('Select_Activities').value.length; i++){
+      if(activitySelected == this.selectActivitiesForm.get('Select_Activities').value[i]){
+        this.selectActivitiesForm.get('Select_Activities').value.splice(i, 1);
+        this.activitiesSelected.splice(i, 1);
+      }
+    }
+    console.log(this.selectActivitiesForm.get('Select_Activities').value);
   }
 
   handleSelectActivities(){
