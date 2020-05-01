@@ -1,0 +1,20 @@
+$shocklogic-orange: #FD814C;
+$shocklogic-light: whitesmoke;
+$shocklogic-font: 'Nunito Sans', sans-serif;
+
+:host ::ng-deep .mat-form-field-wrapper{
+    padding-bottom: 0px;
+}
+
+.mat-tab-group {
+    max-width: 540px;
+    width: 90%;
+}
+
+table { border-collapse: collapse; width: 100%; font-family: $shocklogic-font; font-size: 13px; border: 1px solid #FCD2AE; }
+th, td { text-align: left; padding: 8px; font-weight: 600; border-bottom: 1px solid #FCD2AE; }
+tr:nth-child(even){background-color: #FCD2AE }
+tr:hover {background-color: #FDA256; }
+th {font-weight: 700; }
+
+.percentage-scanned { height: 25px; }

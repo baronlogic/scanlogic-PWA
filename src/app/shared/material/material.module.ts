@@ -12,6 +12,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatListModule} from '@angular/material/list';
+import {MatTabsModule} from '@angular/material/tabs';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
@@ -33,6 +34,7 @@ const MATERIAL_MODULES = [
   MatCardModule,
   MatExpansionModule,
   MatListModule,
+  MatTabsModule,
   MatButtonModule,
   MatBadgeModule,
   MatChipsModule,

@@ -27,7 +27,7 @@ export class ParticipantDetailsComponent implements OnInit {
     this.sub = this.route.params.subscribe(params => {
       this.id = +params['id']; // (+) converts string 'id' to a number
       this.getParticipant(this.id);
-   });
+    });
   }
 
   goToSearch(){

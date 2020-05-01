@@ -6,16 +6,27 @@
     <div class="header width-100" fxLayout="column" fxLayoutAlign="center center">
         <mat-toolbar>
             <span class="spacer"></span>
-            <mat-form-field class="width-75 p-0" appearance="outline">
-                <mat-label>Search</mat-label>
-                <input [(ngModel)]="listFilter" type="text" matInput>
-            </mat-form-field>
+            <form [formGroup]="searchForm" (ngSubmit)="searchParticipant()">
+                <mat-form-field class="width-75 p-0" appearance="outline">
+                    <mat-label>Search</mat-label>
+                    <input type="text" matInput formControlName="Search_Term">
+                </mat-form-field>
+            </form>
             <span class="spacer"></span>
-            <mat-chip-list>
-                <mat-chip>One fish</mat-chip>
-                <mat-chip>Two fish</mat-chip>
-                <mat-chip>Two fish</mat-chip>
-            </mat-chip-list>
+            <button class="mr--15" mat-icon-button [matMenuTriggerFor]="statisticsMenu"><mat-icon>report</mat-icon></button>
+            <mat-menu class="card" #statisticsMenu="matMenu">
+                <mat-card class="example-card">
+                    <mat-card-content class="text-center">
+                        <div class="width-100" style="overflow-x:auto;">
+                            <table>
+                              <tr class="tr-total"><td>TOTAL</td><td>{{this.projectScanStatistics.Total_Participants}}</td></tr>
+                              <tr class="tr-arrived"><td>ARRIVED</td><td>{{this.projectScanStatistics.Total_Scanned_In}}</td></tr>
+                              <tr class="tr-remaining"><td>REMAINING</td><td>{{this.projectScanStatistics.Total_Not_Scanned}}</td></tr>
+                            </table>
+                          </div>
+                    </mat-card-content>
+                </mat-card>
+            </mat-menu>
             <span class="spacer"></span>
         </mat-toolbar>
     </div>
@@ -39,8 +50,11 @@
                     <mat-card-content>
                         
                     </mat-card-content>
-                    <div fxLayout="row">
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
                         <button class="validate-btn btn-sm" mat-stroked-button>Validate</button>
+                        <mat-chip-list *ngIf="participant.Scan_Count > 0">
+                            <mat-chip class="chip-arrived">ARRIVED</mat-chip>
+                        </mat-chip-list>
                     </div>
                 </div>
                 <div>

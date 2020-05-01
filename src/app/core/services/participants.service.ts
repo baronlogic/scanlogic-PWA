@@ -24,6 +24,17 @@ export class ParticipantsService extends ApiService {
     return this.http.get(this.API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME+'/'+personId, this.httpOptions);
   }
 
+  searchParticipant(clientId: string, projectId: string, searchTerm){
+    return this.http.post(this.API_URL+clientId+'-'+projectId+'-2-/'+ENDPOINT_NAME+'/search', searchTerm, this.httpOptions).pipe(
+      map(
+        (resp: any) => { 
+          let participants = resp.filter(value => value.Date_Registered != '');
+          return participants;
+        }
+      )
+    );
+  }
+
 
 
 }
